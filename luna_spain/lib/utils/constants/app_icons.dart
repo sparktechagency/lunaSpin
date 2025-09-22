@@ -32,4 +32,5 @@ class AppIcons {
   static const String logoWithText = "$baseurl/logo_with_text.svg";
   static const String googleAuth = "$baseurl/google_auth.svg";
   static const String appleAuth = "$baseurl/apple_auth.svg";
+  static const String inboxEmail = "$baseurl/inbox_email.svg";
 }

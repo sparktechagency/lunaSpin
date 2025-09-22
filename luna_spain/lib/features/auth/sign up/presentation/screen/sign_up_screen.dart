@@ -20,6 +20,8 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    
     return Scaffold(
       body: Stack(
         fit: StackFit.expand,
@@ -32,6 +34,7 @@ class SignUpScreen extends StatelessWidget {
 
           SafeArea(
             child: GetBuilder<SignUpController>(
+              init: SignUpController(),
               builder: (controller) {
                 return SingleChildScrollView(
                   padding: EdgeInsets.symmetric(horizontal: 28.w, vertical: 28.h),
@@ -206,8 +209,7 @@ class SignUpScreen extends StatelessWidget {
                                               CommonText(
                                                 text: AppString.privacyPolicy,
                                                 fontSize: 14,
-                                                                                            textAlign: TextAlign.start,
-                                              
+                                                textAlign: TextAlign.start,
                                                 color: AppColors.colorPrimaryBlack,
                                                 fontWeight: FontWeight.w600,
                                               ),
@@ -346,7 +348,8 @@ class SignUpScreen extends StatelessWidget {
                               color: Colors.transparent,
                               child: InkWell(
                                 borderRadius: BorderRadius.circular(28.r),
-                                onTap: () => controller.signUpUser(),
+                               onTap: () => Get.toNamed(AppRoutes.signIn)
+,
                                 child: Column(
                                   children: [
                                     Row(

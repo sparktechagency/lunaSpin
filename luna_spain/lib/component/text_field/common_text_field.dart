@@ -95,7 +95,8 @@ class CommonTextField extends StatelessWidget {
         hintStyle: GoogleFonts.roboto(fontSize: 14, color: hintTextColor),
         labelStyle: GoogleFonts.roboto(fontSize: 14, color: labelTextColor),
         prefix: CommonText(text: prefixText ?? "", fontWeight: FontWeight.w400),
-        suffixIcon: isPassword ? null : (suffixIcon ?? _buildPasswordSuffixIcon()),
+        // Never show eye icon; only show custom suffixIcon if provided and not a password field
+        suffixIcon: isPassword ? null : suffixIcon,
       ),
     );
   }
@@ -105,27 +106,5 @@ class CommonTextField extends StatelessWidget {
       borderRadius: BorderRadius.circular(borderRadius.r),
       borderSide: BorderSide(color: borderColor),
     );
-  }
-
-  Widget _buildPasswordSuffixIcon() {
-    return GestureDetector(
-      onTap: toggle,
-      child: Padding(
-        padding: EdgeInsetsDirectional.only(end: 10.w),
-        child: Obx(
-          () => Icon(
-            obscureText.value
-                ? Icons.visibility_off_outlined
-                : Icons.visibility_outlined,
-            size: 20.sp,
-            color: textColor,
-          ),
-        ),
-      ),
-    );
-  }
-
-  void toggle() {
-    obscureText.value = !obscureText.value;
   }
 }

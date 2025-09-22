@@ -72,4 +72,11 @@ class SignInController extends GetxController {
     // isLoading = false;
     // update();
   }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 }

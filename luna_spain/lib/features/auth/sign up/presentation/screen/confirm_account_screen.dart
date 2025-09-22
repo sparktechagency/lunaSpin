@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:luna_spain/component/image/common_image.dart';
 import 'package:luna_spain/component/text/common_text.dart';
 import 'package:luna_spain/utils/constants/app_colors.dart';
+import 'package:luna_spain/utils/constants/app_icons.dart';
 import 'package:luna_spain/utils/constants/app_images.dart';
 import 'package:luna_spain/utils/constants/app_string.dart';
 import 'package:luna_spain/utils/extensions/extension.dart';
@@ -28,7 +29,7 @@ class ConfirmAccountScreen extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 28.w, vertical: 28.h),
                   child: Column(
                     children: [
-                      // Top logo
+                     60.height,
                       CommonImage(
                         imageSrc: AppImages.finalLogoText,
                         height: 61.h,
@@ -49,14 +50,11 @@ class ConfirmAccountScreen extends StatelessWidget {
                         child: Column(
                           children: [
                             // Envelope illustration
-                            Container(
-                              width: 92.w,
-                              height: 92.w,
-                              decoration: BoxDecoration(
-                                color: AppColors.colourGreyScaleGreyTint40,
-                                borderRadius: BorderRadius.circular(12.r),
-                              ),
-                              child: Icon(Icons.mail_outline, size: 44.sp, color: AppColors.colorPrimaryBlack),
+                            CommonImage(
+                              imageSrc: AppIcons.inboxEmail,
+                              height: 100.h,
+                              width: 100.w,
+                              fill: BoxFit.contain,
                             ),
                             16.height,
                             CommonText(

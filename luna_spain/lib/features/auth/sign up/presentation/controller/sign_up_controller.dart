@@ -33,8 +33,6 @@ class SignUpController extends GetxController {
 
   String signUpToken = '';
 
-  static SignUpController get instance => Get.put(SignUpController());
-
   TextEditingController nameController = TextEditingController(
     text: kDebugMode ? "Namimul Hassan" : "",
   );
@@ -60,11 +58,6 @@ class SignUpController extends GetxController {
   bool hasNumber = false;
   bool hasSpecial = false;
 
-  @override
-  void dispose() {
-    _timer?.cancel();
-    super.dispose();
-  }
 
   void toggleAgreeTerms(bool? value) {
     agreeToTerms = value ?? false;
@@ -191,5 +184,21 @@ class SignUpController extends GetxController {
     hasNumber = RegExp(r'[0-9]').hasMatch(password);
     hasSpecial = RegExp(r'[~!@#\$%\^&*()_+\-={}\[\]|;:"<>,.?/`]').hasMatch(password);
     update();
+  }
+
+  @override
+  void dispose() {
+    // Cancel timer to prevent memory leaks
+    _timer?.cancel();
+    
+    // Dispose all TextEditingControllers
+    nameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    numberController.dispose();
+    otpController.dispose();
+    
+    super.dispose();
   }
 }

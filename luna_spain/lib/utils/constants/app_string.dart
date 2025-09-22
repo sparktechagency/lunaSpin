@@ -302,4 +302,23 @@ class AppString {
   static const String notReceivedEmail =
       "If you haven’t receive an email from us within a few minutes, resend below.";
   static const String resend = "Resend";
+
+  // Forgot password redesign
+  static const String notAProblem = "Not a problem!";
+  static const String enterEmailToReset =
+      "Enter your email below to reset your password to your account.";
+  static const String submit = "Submit";
+
+  // Forgot password confirmation screen
+  static const String checkYourInbox = "Check your inbox";
+  static const String checkYourInboxDetails =
+      "If you have an account associated with that email address, we’ll send you a password reset email.";
+
+  // Reset Password screen
+  static const String resetPassword = "Reset password";
+  static const String enterNewPasswordBelow = "Enter your new password below.";
+  static const String confirmNewPassword = "Confirm new password";
+  static const String resetPasswordCta = "Reset password";
+  static const String allFieldsRequired =
+      "All form fields are required for form submission";
 }

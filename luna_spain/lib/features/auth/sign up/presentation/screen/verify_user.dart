@@ -20,7 +20,7 @@ class _VerifyUserState extends State<VerifyUser> {
 
   @override
   void initState() {
-    SignUpController.instance.startTimer();
+   // SignUpController.instance.startTimer();
     super.initState();
   }
 

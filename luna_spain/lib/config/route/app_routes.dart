@@ -3,6 +3,7 @@ import '../../features/auth/change_password/presentation/screen/change_password_
 import '../../features/auth/forgot password/presentation/screen/create_password.dart';
 import '../../features/auth/forgot password/presentation/screen/forgot_password.dart';
 import '../../features/auth/forgot password/presentation/screen/verify_screen.dart';
+import '../../features/auth/forgot password/presentation/screen/check_inbox_screen.dart';
 import '../../features/auth/sign in/presentation/screen/sign_in_screen.dart';
 import '../../features/auth/sign up/presentation/screen/sign_up_screen.dart';
 import '../../features/auth/sign up/presentation/screen/verify_user.dart';
@@ -25,7 +26,7 @@ class AppRoutes {
   static const String onboarding = "/onboarding_screen.dart";
   static const String signUp = "/sign_up_screen.dart";
   static const String verifyUser = "/verify_user.dart";
-  static const String signIn = "/sign_in_screen.dart";
+ static const String signIn        = '/sign-in';
   static const String forgotPassword = "/forgot_password.dart";
   static const String verifyEmail = "/verify_screen.dart";
   static const String createPassword = "/create_password.dart";
@@ -41,13 +42,14 @@ class AppRoutes {
   static const String languageScreen = "/language_screen.dart";
   static const String signInSignUp = "/sign_in_sign_up_screen.dart";
   static const String confirmAccount = "/confirm_account_screen.dart";
+  static const String checkInbox = "/check_inbox_screen.dart";
 
   static List<GetPage> routes = [
     GetPage(name: splash, page: () => const SplashScreen()),
     GetPage(name: onboarding, page: () => const OnboardingScreen()),
     GetPage(name: signUp, page: () => SignUpScreen()),
     GetPage(name: verifyUser, page: () => const VerifyUser()),
-    GetPage(name: signIn, page: () => SignInScreen()),
+    GetPage(name: signIn, page: () => const SignInScreen()),
     GetPage(name: forgotPassword, page: () => ForgotPasswordScreen()),
     GetPage(name: verifyEmail, page: () => const VerifyScreen()),
     GetPage(name: createPassword, page: () => CreatePassword()),
@@ -62,5 +64,6 @@ class AppRoutes {
     GetPage(name: setting, page: () => const SettingScreen()),
     GetPage(name: signInSignUp, page: () => const SignInSignUpScreen()),
     GetPage(name: confirmAccount, page: () => const ConfirmAccountScreen()),
+    GetPage(name: checkInbox, page: () => const CheckInboxScreen()),
   ];
 }
