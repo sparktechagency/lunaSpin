@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:get/get.dart';
+import '../../../../../config/route/app_routes.dart';
 
 class ConfirmAccountController extends GetxController {
   Timer? _timer;
@@ -8,7 +9,12 @@ class ConfirmAccountController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    Future.delayed(const Duration(seconds: 5), navigate);
     startTimer();
+  }
+
+  navigate(){
+    Get.offAllNamed(AppRoutes.accountConfirmed);
   }
 
   @override

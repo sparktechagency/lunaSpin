@@ -303,6 +303,13 @@ class AppString {
       "If you haven’t receive an email from us within a few minutes, resend below.";
   static const String resend = "Resend";
 
+  // Account Confirmed Success screen
+  static const String accountConfirmed = "Your account has been confirmed.";
+  static const String goodToSeeYou = "Good to see you!";
+  static const String accountConfirmedDetails = 
+      "Now that your account has been\nconfirmed, let's start customizing\nyour account and profile.";
+  static const String illDoThisLater = "I'll do this later";
+
   // Forgot password redesign
   static const String notAProblem = "Not a problem!";
   static const String enterEmailToReset =
@@ -321,4 +328,20 @@ class AppString {
   static const String resetPasswordCta = "Reset password";
   static const String allFieldsRequired =
       "All form fields are required for form submission";
+
+  // Profile Details screen
+  static const String ourGoals = "Our Goals";
+  static const String yourProfile = "Your profile";
+  static const String yourDetails = "Your details";
+  static const String firstNameHint = "First name...";
+  static const String lastNameHint = "Last name...";
+  static const String country = "COUNTRY";
+  static const String selectCountry = "Select country...";
+  static const String skillSet = "SKILL SET";
+  static const String maxSkills = "max. 5 skills";
+  static const String yearsOfExperience = "YEARS OF EXPERIENCE";
+  static const String selectYears = "Select years...";
+  static const String levelOfExperience = "LEVEL OF EXPERIENCE";
+  static const String selectLevel = "Select level...";
+  static const String emailNotification = "I'd like to receive the occasional email about stories, events, and offers from LunaSpin. You can opt out at any time.";
 }

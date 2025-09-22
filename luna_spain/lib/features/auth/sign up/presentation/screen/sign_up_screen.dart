@@ -41,7 +41,7 @@ class SignUpScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      // Top logo
+                     55.height,
                       CommonImage(
                         imageSrc: AppImages.finalLogoText,
                         height: 61.h,
@@ -49,7 +49,7 @@ class SignUpScreen extends StatelessWidget {
                         fill: BoxFit.contain,
                       ).center,
 
-                      24.verticalSpace,
+                      50.verticalSpace,
 
                       // Center card
                       Container(

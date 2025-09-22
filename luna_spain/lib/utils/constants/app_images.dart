@@ -24,4 +24,10 @@ class AppImages {
   static const String language = "$baseurl/language.png";
   static const String splashBg = "$baseurl/splash_bg.png";
   static const String finalLogoText = "$baseurl/final_logo_text.png";
+  static const String logoWithBg = "$baseurl/logo_with_bg.png";
+  static const String stepperOne = "$baseurl/steper_one.png";
+  static const String stepperTwo = "$baseurl/steper_two.png";
+  static const String man = "$baseurl/man.png";
+  
+
 }

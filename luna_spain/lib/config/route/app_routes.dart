@@ -8,6 +8,7 @@ import '../../features/auth/sign in/presentation/screen/sign_in_screen.dart';
 import '../../features/auth/sign up/presentation/screen/sign_up_screen.dart';
 import '../../features/auth/sign up/presentation/screen/verify_user.dart';
 import '../../features/auth/sign up/presentation/screen/confirm_account_screen.dart';
+import '../../features/auth/sign up/presentation/screen/account_confirmed_screen.dart';
 import '../../features/message/presentation/screen/chat_screen.dart';
 import '../../features/message/presentation/screen/message_screen.dart';
 import '../../features/notifications/presentation/screen/notifications_screen.dart';
@@ -19,6 +20,8 @@ import '../../features/setting/presentation/screen/privacy_policy_screen.dart';
 import '../../features/setting/presentation/screen/setting_screen.dart';
 import '../../features/setting/presentation/screen/terms_of_services_screen.dart';
 import '../../features/splash/splash_screen.dart';
+import '../../features/another_screen/profile_details/presentation/screens/add_profile_details_screen.dart';
+import '../../features/another_screen/profile_details/presentation/screens/add_profile_picture_screen.dart';
 
 class AppRoutes {
   static const String test = "/test_screen.dart";
@@ -26,7 +29,7 @@ class AppRoutes {
   static const String onboarding = "/onboarding_screen.dart";
   static const String signUp = "/sign_up_screen.dart";
   static const String verifyUser = "/verify_user.dart";
- static const String signIn        = '/sign-in';
+  static const String signIn        = '/sign-in';
   static const String forgotPassword = "/forgot_password.dart";
   static const String verifyEmail = "/verify_screen.dart";
   static const String createPassword = "/create_password.dart";
@@ -43,6 +46,9 @@ class AppRoutes {
   static const String signInSignUp = "/sign_in_sign_up_screen.dart";
   static const String confirmAccount = "/confirm_account_screen.dart";
   static const String checkInbox = "/check_inbox_screen.dart";
+  static const String accountConfirmed = "/account_confirmed_screen.dart";
+  static const String addProfileDetails = "/add_profile_details_screen.dart";
+  static const String addProfilePicture = "/add_profile_picture_screen.dart";
 
   static List<GetPage> routes = [
     GetPage(name: splash, page: () => const SplashScreen()),
@@ -65,5 +71,8 @@ class AppRoutes {
     GetPage(name: signInSignUp, page: () => const SignInSignUpScreen()),
     GetPage(name: confirmAccount, page: () => const ConfirmAccountScreen()),
     GetPage(name: checkInbox, page: () => const CheckInboxScreen()),
+    GetPage(name: accountConfirmed, page: () => const AccountConfirmedScreen()),
+    GetPage(name: addProfileDetails, page: () => const AddProfileDetailsScreen()),
+    GetPage(name: addProfilePicture, page: () => const AddProfilePictureScreen()),
   ];
 }

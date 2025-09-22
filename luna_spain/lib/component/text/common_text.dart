@@ -19,7 +19,8 @@ class CommonText extends StatelessWidget {
       this.color = AppColors.black,
       required this.text,
       this.style,
-      this.overflow = TextOverflow.ellipsis});
+      this.overflow = TextOverflow.ellipsis,
+      this.underline = false});
 
   final double left;
   final double right;
@@ -33,10 +34,22 @@ class CommonText extends StatelessWidget {
   final int maxLines;
   final TextOverflow overflow;
   final TextStyle? style;
-
+  final bool underline;
 
   @override
   Widget build(BuildContext context) {
+    final baseStyle = style ??
+        GoogleFonts.poppins(
+          fontSize: fontSize.sp,
+          fontWeight: fontWeight,
+          color: color,
+        );
+
+    final effectiveStyle = baseStyle.copyWith(
+      decoration: underline ? TextDecoration.underline : TextDecoration.none,
+      decorationColor: color,
+    );
+
     return Padding(
       padding: EdgeInsets.only(
           left: left.w, right: right.w, top: top.h, bottom: bottom.h),
@@ -45,12 +58,7 @@ class CommonText extends StatelessWidget {
         text,
         maxLines: maxLines,
         overflow: overflow,
-        style: style ??
-            GoogleFonts.poppins(
-              fontSize: fontSize.sp,
-              fontWeight: fontWeight,
-              color: color,
-            ),
+        style: effectiveStyle,
       ),
     );
   }

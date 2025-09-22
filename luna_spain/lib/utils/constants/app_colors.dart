@@ -59,7 +59,8 @@ class AppColors {
   static const Color colorSecondaryGreen = Color(0xffB6E2D3);
   static const Color colorPrimaryBlue = Color(0xff5B88E8);
   static const Color colorPrimaryOrange = Color(0xffF4A261);
-  
+  static const Color colorPrimaryPink = Color(0xffFFC2E2);
+  static const Color colourGreyscaleGrey = Color(0xffD9D9D9);
 
 
 
