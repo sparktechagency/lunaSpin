@@ -184,16 +184,12 @@ class SignUpScreen extends StatelessWidget {
                                               CommonText(
                                                 text: AppString.termsOfServices,
                                                 fontSize: 14,
-                                                textAlign: TextAlign.start,
+                                                underline: true,
                                                 color: AppColors.colorPrimaryBlack,
                                                 fontWeight: FontWeight.w600,
                                               ),
 
-                                              Container(
-                                                height: 1,
-                                                width: 130.w,
-                                                color: AppColors.colorPrimaryBlack,
-                                              ),
+                                          
                                             ],
                                           ),
                                         ),
@@ -209,15 +205,11 @@ class SignUpScreen extends StatelessWidget {
                                               CommonText(
                                                 text: AppString.privacyPolicy,
                                                 fontSize: 14,
-                                                textAlign: TextAlign.start,
+                                                underline: true,
                                                 color: AppColors.colorPrimaryBlack,
                                                 fontWeight: FontWeight.w600,
                                               ),
-                                                Container(
-                                                height: 1,
-                                                width: 110.w,
-                                                color: AppColors.colorPrimaryBlack,
-                                              ),
+                                          
                                             ],
                                           ),
                                         ),
@@ -367,15 +359,12 @@ class SignUpScreen extends StatelessWidget {
                                             CommonText(
                                               text: "${AppString.logInHere} ",
                                               fontSize: 16,
+                                              underline: true,
                                               color: AppColors.colorPrimaryBlue,
                                               fontWeight: FontWeight.w600,
                                             ),
  
-                                              Container(
-                                                width: 100.w,
-                                                height: 1.h,
-                                                color: AppColors.colorPrimaryBlue,
-                                              ),
+                                           
  
                                           ],
                                         ),
@@ -407,6 +396,7 @@ class SignUpScreen extends StatelessWidget {
                             child: CommonText(
                               text: AppString.termsOfServices,
                               fontSize: 12,
+                              underline: true,
                               fontWeight: FontWeight.w500,
                               color: AppColors.white.withOpacity(0.9),
                             ),
@@ -421,6 +411,7 @@ class SignUpScreen extends StatelessWidget {
                             child: CommonText(
                               text: AppString.privacyPolicy,
                               fontSize: 12,
+                              underline: true,
                               fontWeight: FontWeight.w500,
                               color: AppColors.white.withOpacity(0.9),
                             ),

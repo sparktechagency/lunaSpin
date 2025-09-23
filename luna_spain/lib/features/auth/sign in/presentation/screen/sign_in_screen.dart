@@ -150,14 +150,10 @@ class SignInScreen extends StatelessWidget {
                                             top: 12,
                                             color: AppColors.colorPrimaryBlue,
                                             fontSize: 16,
+                                            underline: true,
                                             fontWeight: FontWeight.w600,
                                           ),
-                                          Container(
-
-                                            height: 1.h,
-                                            width: 175.w,
-                                            color: AppColors.colorPrimaryBlue,
-                                          ),
+                                       
                                         ],
                                       ),
                                     ],
@@ -241,16 +237,12 @@ class SignInScreen extends StatelessWidget {
                                   CommonText(
                                     text: AppString.createYourAccountToday,
                                     fontSize: 16,
+                                    underline: true,
                                     color: AppColors.colorPrimaryBlue,
                                     fontWeight: FontWeight.w600,
                                   ),
-                                  Container(
-                                    width: 260.w,
-
-                                    height: 1.h,
-                                    
-                                    color: AppColors.colorPrimaryBlue,
-                                  ),
+                               
+                              
                                 ],
                               ),
                             ),
@@ -275,6 +267,7 @@ class SignInScreen extends StatelessWidget {
                             onTap: () => Get.toNamed(AppRoutes.termsOfServices),
                             child: CommonText(
                               text: AppString.termsOfServices,
+                              underline: true,
                                  fontSize: 12,
                               fontWeight: FontWeight.w500,
                               color: AppColors.white.withOpacity(0.9),
@@ -290,6 +283,7 @@ class SignInScreen extends StatelessWidget {
                             child: CommonText(
                               text: AppString.privacyPolicy,
                               fontSize: 12,
+                              underline: true,
                               fontWeight: FontWeight.w500,
                               color: AppColors.white.withOpacity(0.9),
                             ),

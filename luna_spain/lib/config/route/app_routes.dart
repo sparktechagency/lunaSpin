@@ -17,6 +17,8 @@ import '../../features/onboarding_screen/screen/sign_in_sign_up_screen.dart';
 import '../../features/profile/presentation/screen/edit_profile.dart';
 import '../../features/profile/presentation/screen/profile_screen.dart';
 import '../../features/profile/presentation/screen/profile_empty_screen.dart';
+import '../../features/profile/presentation/screen/following_screen.dart';
+import '../../features/profile/presentation/screen/followers_screen.dart';
 import '../../features/setting/presentation/screen/privacy_policy_screen.dart';
 import '../../features/setting/presentation/screen/setting_screen.dart';
 import '../../features/setting/presentation/screen/terms_of_services_screen.dart';
@@ -51,6 +53,8 @@ class AppRoutes {
   static const String accountConfirmed = "/account_confirmed_screen.dart";
   static const String addProfileDetails = "/add_profile_details_screen.dart";
   static const String addProfilePicture = "/add_profile_picture_screen.dart";
+  static const String following = "/following_screen.dart";
+  static const String followers = "/followers_screen.dart";
 
   static List<GetPage> routes = [
     GetPage(name: splash, page: () => const SplashScreen()),
@@ -66,7 +70,7 @@ class AppRoutes {
     GetPage(name: chat, page: () => const ChatListScreen()),
     GetPage(name: message, page: () => const MessageScreen()),
     GetPage(name: profile, page: () => const ProfileScreen()),
-    GetPage(name: profileEmpty, page: () =>  ProfileEmptyScreen()),
+    GetPage(name: profileEmpty, page: () => const ProfileEmptyScreen()),
     GetPage(name: editProfile, page: () => EditProfile()),
     GetPage(name: privacyPolicy, page: () => const PrivacyPolicyScreen()),
     GetPage(name: termsOfServices, page: () => const TermsOfServicesScreen()),
@@ -77,5 +81,7 @@ class AppRoutes {
     GetPage(name: accountConfirmed, page: () => const AccountConfirmedScreen()),
     GetPage(name: addProfileDetails, page: () => const AddProfileDetailsScreen()),
     GetPage(name: addProfilePicture, page: () => const AddProfilePictureScreen()),
+    GetPage(name: following, page: () => const FollowingScreen()),
+    GetPage(name: followers, page: () => const FollowersScreen()),
   ];
 }

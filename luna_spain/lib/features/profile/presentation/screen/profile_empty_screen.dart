@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:luna_spain/config/route/app_routes.dart';
 import 'package:luna_spain/component/bottom_nav_bar/common_bottom_bar.dart';
 import 'package:luna_spain/component/image/common_image.dart';
 import 'package:luna_spain/component/text/common_text.dart';
@@ -9,7 +11,7 @@ import 'package:luna_spain/utils/constants/app_images.dart';
 import 'package:luna_spain/utils/extensions/extension.dart';
 
 class ProfileEmptyScreen extends StatelessWidget {
-const  ProfileEmptyScreen({super.key});
+  const ProfileEmptyScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -63,19 +65,27 @@ const  ProfileEmptyScreen({super.key});
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            CommonText(
-                              text: '1 Followers',
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.white,
+                            GestureDetector(
+                              onTap: () => Get.toNamed(AppRoutes.followers),
+                              child: CommonText(
+                                text: '1 Followers',
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.white,
+                              ),
                             ),
 
                             7.width,
-                            CommonText(
-                              text: '0 Following',
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.white,
+                            GestureDetector(
+                              onTap: () => Get.toNamed(AppRoutes.following),
+                              child: CommonText(
+                                text: '0 Following',
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.white,
+                                top: 0,
+                                bottom: 0,
+                              ),
                             ),
                           ],
                         ),

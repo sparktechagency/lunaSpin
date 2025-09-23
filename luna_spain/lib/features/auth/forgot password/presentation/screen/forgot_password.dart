@@ -125,6 +125,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                                 child: CommonText(
                                   text: AppString.cancel,
                                   fontSize: 16,
+                                  underline: true,
                                   color: Colors.red,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -155,11 +156,11 @@ class ForgotPasswordScreen extends StatelessWidget {
                               CommonText(
                                 text: AppString.termsOfServices,
                                 fontSize: 12,
+                                underline: true,
                                 fontWeight: FontWeight.w500,
                                 color: AppColors.white.withOpacity(0.9),
                               ),
 
-                              Container(width: 120.w, height: 1.h, color: AppColors.white.withOpacity(0.9),)
                             ],
                           ),
                         ),
@@ -175,11 +176,11 @@ class ForgotPasswordScreen extends StatelessWidget {
                               CommonText(
                                 text: AppString.privacyPolicy,
                                 fontSize: 12,
+                                underline: true,
                                 fontWeight: FontWeight.w500,
                                 color: AppColors.white.withOpacity(0.9),
                               ),
 
-                              Container(width: 95.w, height: 1.h, color: AppColors.white.withOpacity(0.9),)
                             ],
                           ),
                         ),

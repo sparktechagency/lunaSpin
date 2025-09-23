@@ -66,7 +66,11 @@ class AppColors {
   static const Color colorNoticeWaring = Color(0xffF4A261);
   static const Color colourSecondaryGoldenhaze = Color(0xffFFC857);
   static const Color colorNotice = Color(0xff457B9D);
+  static const Color colorNoticeError = Color(0xffDA1B2B);
   static const Color colorGreyScalBlack60 = Color(0xff13293D);
+  static const Color colorGreyScalBlack20 = Color(0xffF7F7F7);
+  static const Color colorGreyScalBlack80 = Color(0xffE1E1E1);
+  static const Color colorGreyScalGrey = Color(0xffD9D9D9);
 
 
 
