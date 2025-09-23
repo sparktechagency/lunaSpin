@@ -35,4 +35,10 @@ class AppIcons {
   static const String inboxEmail = "$baseurl/inbox_email.svg";
   static const String goodToSee = "$baseurl/good_to_see.svg";
   static const String check = "$baseurl/check.svg";
+  static const String addIcon = "$baseurl/add_icon.svg";
+  static const String homeIcon = "$baseurl/home_icon.svg";
+  static const String profileIcon = "$baseurl/profile_icon.svg";
+  static const String searchIcon = "$baseurl/search_icon.svg";
+  static const String sendIcon = "$baseurl/send_icon.svg";
+  static const String drawer = "$baseurl/drawer.svg";
 }

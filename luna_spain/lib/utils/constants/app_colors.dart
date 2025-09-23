@@ -51,6 +51,7 @@ class AppColors {
 
   static const Color colourGreyScaleBlack = Color(0xff13293D);
   static const Color colourPrimaryPurple = Color(0xff540D6E);
+  static const Color colourPrimaryPurple80 = Color(0xff763D8B);
   static const Color colourGreyScaleGreyTint60 = Color(0xffE8E8E8);
   static const Color colourGreyScaleGreyTint40 = Color(0xffF0F0F0);
   static const Color colourGreyScaleGreyTint20 = Color(0xffF9F9F9);
@@ -60,7 +61,12 @@ class AppColors {
   static const Color colorPrimaryBlue = Color(0xff5B88E8);
   static const Color colorPrimaryOrange = Color(0xffF4A261);
   static const Color colorPrimaryPink = Color(0xffFFC2E2);
+  static const Color colorPrimaryPink60 = Color(0xffFFC2E2);
   static const Color colourGreyscaleGrey = Color(0xffD9D9D9);
+  static const Color colorNoticeWaring = Color(0xffF4A261);
+  static const Color colourSecondaryGoldenhaze = Color(0xffFFC857);
+  static const Color colorNotice = Color(0xff457B9D);
+  static const Color colorGreyScalBlack60 = Color(0xff13293D);
 
 
 

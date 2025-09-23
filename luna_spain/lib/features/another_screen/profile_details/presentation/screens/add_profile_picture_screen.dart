@@ -18,10 +18,10 @@ class AddProfilePictureScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Ensure single controller instance
-    final picController = Get.put(AddProfilePictureController());
+
     return Scaffold(
       body: GetBuilder<AddProfilePictureController>(
+        init: AddProfilePictureController(),
         builder: (controller) => Stack(
           fit: StackFit.expand,
           children: [
@@ -152,7 +152,7 @@ class AddProfilePictureScreen extends StatelessWidget {
                                 CommonButton(
                                   titleText: 'Finish',
                                   onTap: () =>
-                                      Get.offAllNamed(AppRoutes.profile),
+                                      Get.offAllNamed(AppRoutes.profileEmpty),
                                   isLoading: false,
                                   buttonColor: const Color(0xFF4ECDC4),
                                   borderColor: const Color(0xFF4ECDC4),

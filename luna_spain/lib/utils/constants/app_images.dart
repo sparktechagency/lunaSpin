@@ -28,6 +28,9 @@ class AppImages {
   static const String stepperOne = "$baseurl/steper_one.png";
   static const String stepperTwo = "$baseurl/steper_two.png";
   static const String man = "$baseurl/man.png";
+  static const String profileBg = "$baseurl/profile_bg.png";
+  static const String lunaLogo = "$baseurl/luna_logo.png";
+
   
 
 }
