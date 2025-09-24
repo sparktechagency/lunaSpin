@@ -20,16 +20,16 @@ class ProfileEmptyScreen extends StatelessWidget {
         preferredSize: const Size(0, 0),
         child: AppBar(backgroundColor: AppColors.colourPrimaryPurple),
       ),
-      extendBody: true, // let background render under the bottom nav bar
+      extendBody: true, 
 
       body: Stack(
         fit: StackFit.expand,
         children: [
-          // Background image
+     
           Positioned.fill(
             child: Image.asset(AppImages.profileBg, fit: BoxFit.cover),
           ),
-          // Subtle overlay for readability
+    
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -45,7 +45,7 @@ class ProfileEmptyScreen extends StatelessWidget {
           SafeArea(
             child: Column(
               children: [
-                _topBar(),
+                _topBar(context),
 
                 Expanded(
                   child: SingleChildScrollView(
@@ -142,7 +142,7 @@ class ProfileEmptyScreen extends StatelessWidget {
     );
   }
 
-  Widget _topBar() {
+  Widget _topBar(context) {
     return Container(
       padding: EdgeInsets.only(
         left: 20.w,
@@ -174,12 +174,15 @@ class ProfileEmptyScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
 
-          CommonImage(
-            imageSrc: AppIcons.drawer,
-            height: 40.h,
-            width: 40.w,
-            fill: BoxFit.contain,
-          ),
+         GestureDetector(
+  onTap: () => Get.toNamed(AppRoutes.drawer),
+  child: CommonImage(
+    imageSrc: AppIcons.drawer,
+    height: 40.h,
+    width: 40.w,
+    fill: BoxFit.contain,
+  ),
+),
 
 
           CommonImage(

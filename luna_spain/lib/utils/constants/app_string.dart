@@ -344,4 +344,24 @@ class AppString {
   static const String levelOfExperience = "LEVEL OF EXPERIENCE";
   static const String selectLevel = "Select level...";
   static const String emailNotification = "I'd like to receive the occasional email about stories, events, and offers from LunaSpin. You can opt out at any time.";
-}
+ 
+  // Notification Settings
+  static const String notificationSettings = "Notification Settings";
+  static const String pushNotifications = "Push Notifications";
+  static const String emailNotifications = "Email Notifications";
+  static const String smsNotifications = "SMS Notifications";
+  static const String save = "Save";
+  static const String likesOnYourPosts = "LIKES ON YOUR POSTS";
+  static const String commentsOnYourPosts = "COMMENTS ON YOUR POSTS";
+  static const String likesCommentsTagged = "LIKES AND COMMENTS ON POSTS YOU ARE TAGGED IN";
+  static const String newFollowers = "NEW FOLLOWERS";
+  static const String acceptedFollowRequests = "ACCEPTED FOLLOW REQUESTS";
+  static const String messageRequests = "MESSAGE REQUESTS";
+  static const String clubCommunityMessages = "CLUB COMMUNITY MESSAGES";
+  static const String clubClassBookingUpdates = "CLUB CLASS BOOKING UPDATES";
+  static const String birthdays = "BIRTHDAYS";
+  static const String optionOff = "Off";
+  static const String optionOn = "On";
+  static const String optionFromProfilesIFollow = "From profiles I follow";
+  static const String optionFromEveryone = "From everyone";
+ }

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:luna_spain/features/setting/presentation/screen/notification_settings_screen.dart';
 import '../../features/auth/change_password/presentation/screen/change_password_screen.dart';
 import '../../features/auth/forgot password/presentation/screen/create_password.dart';
 import '../../features/auth/forgot password/presentation/screen/forgot_password.dart';
@@ -19,9 +20,11 @@ import '../../features/profile/presentation/screen/profile_screen.dart';
 import '../../features/profile/presentation/screen/profile_empty_screen.dart';
 import '../../features/profile/presentation/screen/following_screen.dart';
 import '../../features/profile/presentation/screen/followers_screen.dart';
+import '../../features/profile/presentation/screen/drawer_screen.dart';
 import '../../features/setting/presentation/screen/privacy_policy_screen.dart';
 import '../../features/setting/presentation/screen/setting_screen.dart';
 import '../../features/setting/presentation/screen/terms_of_services_screen.dart';
+import '../../features/setting/presentation/screen/settings_privacy_screen.dart';
 import '../../features/splash/splash_screen.dart';
 import '../../features/another_screen/profile_details/presentation/screens/add_profile_details_screen.dart';
 import '../../features/another_screen/profile_details/presentation/screens/add_profile_picture_screen.dart';
@@ -55,6 +58,9 @@ class AppRoutes {
   static const String addProfilePicture = "/add_profile_picture_screen.dart";
   static const String following = "/following_screen.dart";
   static const String followers = "/followers_screen.dart";
+  static const String drawer = "/drawer_screen.dart";
+  static const String settingsPrivacy = "/settings_privacy_screen.dart";
+  static const String notificationSettings = "/notification_settings.dart";
 
   static List<GetPage> routes = [
     GetPage(name: splash, page: () => const SplashScreen()),
@@ -83,5 +89,8 @@ class AppRoutes {
     GetPage(name: addProfilePicture, page: () => const AddProfilePictureScreen()),
     GetPage(name: following, page: () => const FollowingScreen()),
     GetPage(name: followers, page: () => const FollowersScreen()),
+    GetPage(name: drawer, page: () => const DrawerScreen()),
+    GetPage(name: settingsPrivacy, page: () => const SettingsPrivacyScreen()),
+    GetPage(name: notificationSettings, page: () => const NotificationSettingsScreen()),
   ];
 }

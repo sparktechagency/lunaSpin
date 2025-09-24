@@ -182,7 +182,10 @@ class _TopBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Icon(Icons.arrow_back, color: AppColors.white, size: 40.h),
+          InkWell(
+            
+            onTap: () => Get.back(),
+            child: Icon(Icons.arrow_back, color: AppColors.white, size: 40.h)),
           CommonImage(
             imageSrc: AppImages.logoWithBg,
             height: 40.h,
