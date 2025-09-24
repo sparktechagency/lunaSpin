@@ -31,6 +31,24 @@ class AppImages {
   static const String profileBg = "$baseurl/profile_bg.png";
   static const String lunaLogo = "$baseurl/luna_logo.png";
 
+
+
+  static const String todayImageFour = "$baseurl/today_image_four.png";
+  static const String todayImageThree = "$baseurl/today_image_three.png";
+  static const String todayImageTwo = "$baseurl/today_image_tow.png";
+  static const String todayImageOne = "$baseurl/today_image_one.png";
+
+  
+  static const String yesterdayImageTwo = "$baseurl/yester_image_two.png";
+  static const String yesterdayImageOne = "$baseurl/yesterday_image_one.png";
+
+  static const String twoDaysAgoImageFour = "$baseurl/two_days_ago_image_four.png";
+  static const String twoDaysAgoImageThree = "$baseurl/two_days_ago_image_three.png";
+  static const String twoDaysAgoImageTwo = "$baseurl/two_days_ago_image_two.png";
+  static const String twoDaysAgoImageOne = "$baseurl/two_days_ago_image_one.png";
+
+  static const String userProfileBg = "$baseurl/user_profile_bg.png";
+
   
 
 }

@@ -27,10 +27,11 @@ import '../../features/setting/presentation/screen/terms_of_services_screen.dart
 import '../../features/setting/presentation/screen/settings_privacy_screen.dart';
 import '../../features/setting/presentation/screen/privacy_settings_screen.dart';
 import '../../features/setting/presentation/screen/close_account_screen.dart';
-import '../../features/setting/presentation/screen/settings_privacy_screen.dart';
 import '../../features/splash/splash_screen.dart';
 import '../../features/another_screen/profile_details/presentation/screens/add_profile_details_screen.dart';
 import '../../features/another_screen/profile_details/presentation/screens/add_profile_picture_screen.dart';
+import '../../features/another_screen/all_drawer_screens/presentation/screens/likes_screen.dart';
+import '../../features/another_screen/all_drawer_screens/presentation/screens/user_profile_screen.dart';
 
 class AppRoutes {
   static const String test = "/test_screen.dart";
@@ -66,6 +67,8 @@ class AppRoutes {
   static const String privacySettings = "/privacy_settings_screen.dart";
   static const String notificationSettings = "/notification_settings.dart";
   static const String closeAccount = "/close_account_screen.dart";
+  static const String likes = "/likes_screen.dart";
+  static const String userProfile = "/user_profile_screen.dart";
 
   static List<GetPage> routes = [
     GetPage(name: splash, page: () => const SplashScreen()),
@@ -99,5 +102,7 @@ class AppRoutes {
     GetPage(name: privacySettings, page: () => const PrivacySettingsScreen()),
     GetPage(name: notificationSettings, page: () => const NotificationSettingsScreen()),
     GetPage(name: closeAccount, page: () => const CloseAccountScreen()),
+    GetPage(name: likes, page: () => const LikesScreen()),
+    GetPage(name: userProfile, page: () =>  UserProfileScreen()),
   ];
 }

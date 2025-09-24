@@ -129,11 +129,17 @@ class DrawerScreen extends StatelessWidget {
                       // Menu items
                       _MenuItem(
                         label: 'Profile',
-                        onTap: () {},
+                        onTap: () {
+                          Get.back();
+                          Future.microtask(() => Get.toNamed(AppRoutes.userProfile));
+                        },
                       ),
                       _MenuItem(
                         label: 'Likes',
-                        onTap: () {},
+                        onTap: () {
+                          Get.back();
+                          Future.microtask(() => Get.toNamed(AppRoutes.likes));
+                        },
                       ),
                       _MenuItem(
                         label: 'Notifications',

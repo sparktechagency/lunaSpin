@@ -392,4 +392,10 @@ class AppString {
   static const String confirmDeletionText =
       "I confirm that once this request has been processed, all data held by LunaSpin which has an association with your account, will be deleted. This action cannot be undone.";
   static const String submitRequest = "Submit request";
+
+  // Drawer - Likes Screen
+  static const String likes = "Likes";
+  static const String today = "Today";
+  static const String yesterday = "Yesterday";
+  static const String twoDaysAgo = "2 Days Ago";
  }
