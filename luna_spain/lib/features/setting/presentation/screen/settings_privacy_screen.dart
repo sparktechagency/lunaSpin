@@ -92,7 +92,7 @@ class SettingsPrivacyScreen extends StatelessWidget {
                       ),
                       _SettingsTile(
                         title: 'Privacy Settings',
-                        onTap: () => Get.toNamed(AppRoutes.privacyPolicy),
+                        onTap: () => Get.toNamed(AppRoutes.privacySettings),
                       ),
                     ],
                   ),

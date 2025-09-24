@@ -364,4 +364,32 @@ class AppString {
   static const String optionOn = "On";
   static const String optionFromProfilesIFollow = "From profiles I follow";
   static const String optionFromEveryone = "From everyone";
+
+  // Privacy Settings
+  static const String privacy = "Privacy";
+  static const String yourDataAndOutsideWorld = "Your data and the outside world";
+  static const String privacyCardBody =
+      "Your account is always visible to LunaSpin members but remains private from those outside our LunaSpin community and network.\n\nThis means your profile and posts can ONLY be seen by other LunaSpin users—not by anyone without an account.\n\nThis ensures a secure space for our community while fostering inspiration and connection among members.";
+  static const String marketingPermissions = "MARKETING PERMISSIONS";
+  static const String marketingNo = "No, I don’t want to be featured.";
+  static const String marketingYes =
+      "Yes, I give permission for LunaSpin to use my profile picture and name within marketing content (e.g. public facing marketing website, print material)";
+  static const String dangerZone = "DANGER ZONE";
+  static const String closeAccountInfo =
+      "To close your account, please submit an account closure request. This ensures your data is securely removed and processed correctly. Closure requests may take up to 48 hours to process, and you’ll receive a confirmation email once it’s\ncomplete.\n\nOnce your request has been processed, all data held by LunaSpin which has an association with your account, will be deleted. This action cannot be undone.";
+  static const String submitAccountClosure = "Submit an account closure request.";
+  static const String termsOfService = "Terms of Service";
+  static const String privacyLink = "Privacy";
+
+  // Close Account
+  static const String closeAccount = "Close account";
+  static const String closeAccountSubtitle =
+      "We’re sorry to see you leaving so soon.\nTell us why you’re closing your account?";
+  static const String feedback = "FEEDBACK";
+  static const String maxCharacters200 = "max. 200 characters";
+  static const String feedbackHint =
+      "Why are you closing your account? Do you have any likes or dislikes...";
+  static const String confirmDeletionText =
+      "I confirm that once this request has been processed, all data held by LunaSpin which has an association with your account, will be deleted. This action cannot be undone.";
+  static const String submitRequest = "Submit request";
  }
