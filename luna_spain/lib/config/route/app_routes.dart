@@ -32,6 +32,7 @@ import '../../features/another_screen/profile_details/presentation/screens/add_p
 import '../../features/another_screen/profile_details/presentation/screens/add_profile_picture_screen.dart';
 import '../../features/another_screen/all_drawer_screens/presentation/screens/likes_screen.dart';
 import '../../features/another_screen/all_drawer_screens/presentation/screens/user_profile_screen.dart';
+import '../../features/another_screen/user_home/presentation/screens/home_screen.dart';
 
 class AppRoutes {
   static const String test = "/test_screen.dart";
@@ -69,6 +70,7 @@ class AppRoutes {
   static const String closeAccount = "/close_account_screen.dart";
   static const String likes = "/likes_screen.dart";
   static const String userProfile = "/user_profile_screen.dart";
+  static const String userHome = "/user_home_screen.dart";
 
   static List<GetPage> routes = [
     GetPage(name: splash, page: () => const SplashScreen()),
@@ -104,5 +106,6 @@ class AppRoutes {
     GetPage(name: closeAccount, page: () => const CloseAccountScreen()),
     GetPage(name: likes, page: () => const LikesScreen()),
     GetPage(name: userProfile, page: () =>  UserProfileScreen()),
+    GetPage(name: userHome, page: () => const HomeScreen()),
   ];
 }

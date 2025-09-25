@@ -122,7 +122,7 @@ class _CommonBottomNavBarState extends State<CommonBottomNavBar> {
 
     if (logicalIndex == 0) {
       if (widget.currentIndex != 0) {
-        Get.toNamed(AppRoutes.setting);
+        Get.toNamed(AppRoutes.userHome);
       }
     } else if (logicalIndex == 1) {
       if (widget.currentIndex != 1) {

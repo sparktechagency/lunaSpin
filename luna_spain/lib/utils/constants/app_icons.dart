@@ -41,4 +41,11 @@ class AppIcons {
   static const String searchIcon = "$baseurl/search_icon.svg";
   static const String sendIcon = "$baseurl/send_icon.svg";
   static const String drawer = "$baseurl/drawer.svg";
+
+  //====================
+  static const String comment = "$baseurl/comment.svg";
+  static const String commentWhite = "$baseurl/comment_white.svg";
+  static const String heartActive = "$baseurl/hear_active.svg";
+  static const String heartInactive = "$baseurl/hear_inactive.svg";
+  static const String settings = "$baseurl/settings.svg";
 }
