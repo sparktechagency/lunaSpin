@@ -4,19 +4,18 @@ import 'package:get/get.dart';
 import 'package:luna_spain/component/image/common_image.dart';
 import 'package:luna_spain/component/text/common_text.dart';
 import 'package:luna_spain/config/route/app_routes.dart';
-import 'package:luna_spain/features/another_screen/club_management/presentation/controller/naw_club_post_controller.dart';
+import 'package:luna_spain/features/another_screen/club_management/presentation/controller/post_draft_controller.dart';
 import 'package:luna_spain/utils/constants/app_colors.dart';
 import 'package:luna_spain/utils/constants/app_images.dart';
 import 'package:luna_spain/utils/extensions/extension.dart';
-import 'package:image_picker/image_picker.dart';
 
-class NawClubPostScreen extends StatelessWidget {
-  const NawClubPostScreen({super.key});
+class PostDraftScreen extends StatelessWidget {
+  const PostDraftScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    if (!Get.isRegistered<NawClubPostController>()) {
-      Get.put(NawClubPostController());
+    if (!Get.isRegistered<PostDraftController>()) {
+      Get.put(PostDraftController());
     }
     return Scaffold(
       appBar: PreferredSize(
@@ -24,7 +23,7 @@ class NawClubPostScreen extends StatelessWidget {
         child: AppBar(backgroundColor: AppColors.colourPrimaryPurple),
       ),
       body: SafeArea(
-        child: GetBuilder<NawClubPostController>(builder: (c) {
+        child: GetBuilder<PostDraftController>(builder: (c) {
           return Column(
             children: [
               _TopBar(),
@@ -49,7 +48,7 @@ class NawClubPostScreen extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              CommonText(text: 'New Post', fontSize: 24, fontWeight: FontWeight.w700, color: AppColors.colourPrimaryPurple),
+                              CommonText(text: 'Post Drafts', fontSize: 24, fontWeight: FontWeight.w700, color: AppColors.colourPrimaryPurple),
                               Container(
                                 decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: AppColors.colorGreyScalGrey)),
                                 child: CircleAvatar(
@@ -61,27 +60,25 @@ class NawClubPostScreen extends StatelessWidget {
                             ],
                           ),
                           22.height,
-                          GestureDetector(
-                            onTap: () async {
-                              final picker = ImagePicker();
-                              final XFile? picked = await picker.pickImage(source: ImageSource.gallery);
-                              if (picked != null) {
-                                Get.toNamed(AppRoutes.createImagePost, arguments: {
-                                  'imagePath': picked.path,
-                                });
-                              }
-                            },
-                            child: _rowTile('Photo Library'),
+
+                          SizedBox(height: 140.h,
+                         
+                            child: ListView.builder(
+                              
+                              itemCount: c.postDraftList.length,
+                              itemBuilder: (context, index){
+                              return Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 4),
+                                child: InkWell(
+                                  
+                                  onTap: (){
+                                    Get.toNamed(AppRoutes.createTextPost);
+                                  },
+                                  child: _rowTile(c.postDraftList[index])),
+                              );
+                            }),
                           ),
-                          10.height,
-                          GestureDetector(
-                            onTap: () => Get.toNamed(AppRoutes.createTextPost),
-                            child: _rowTile('Text Only'),
-                          ),
-                          10.height,
-                          GestureDetector(
-                            onTap: ()=>Get.toNamed(AppRoutes.postDraft),
-                            child: _rowTile('Drafts')),
+                      
                         ],
                       ),
                     ),
@@ -110,6 +107,7 @@ class NawClubPostScreen extends StatelessWidget {
             child: CommonText(
               text: title,
               fontSize: 20,
+              right: 15,
               textAlign: TextAlign.start,
               fontWeight: FontWeight.w600,
               color: AppColors.colorPrimaryBlack,

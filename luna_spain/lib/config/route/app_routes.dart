@@ -1,8 +1,10 @@
 import 'package:get/get.dart';
+import 'package:luna_spain/features/another_screen/club_management/presentation/screens/create_text_post_screen.dart';
+import 'package:luna_spain/features/another_screen/club_management/presentation/screens/post_draft_screen.dart';
 import 'package:luna_spain/features/another_screen/create_club/presentation/screens/club_profile_screen.dart';
 import 'package:luna_spain/features/another_screen/club_management/presentation/screens/club_management_screen.dart';
 import 'package:luna_spain/features/another_screen/club_management/presentation/screens/naw_club_post_screen.dart';
-import 'package:luna_spain/features/another_screen/club_management/presentation/screens/create_text_post_screen.dart';
+import 'package:luna_spain/features/another_screen/club_management/presentation/screens/create_image_post_screen.dart';
 import 'package:luna_spain/features/setting/presentation/screen/notification_settings_screen.dart';
 import '../../features/auth/change_password/presentation/screen/change_password_screen.dart';
 import '../../features/auth/forgot password/presentation/screen/create_password.dart';
@@ -85,6 +87,8 @@ class AppRoutes {
   static const String clubManagement = "/club_management_screen.dart";
   static const String nawClubPost = "/naw_club_post_screen.dart";
   static const String createTextPost = "/create_text_post_screen.dart";
+  static const String postDraft = "/post_draft_screen";
+  static const String createImagePost = "/create_image_post_screen.dart";
 
   static List<GetPage> routes = [
     GetPage(name: splash, page: () => const SplashScreen()),
@@ -128,5 +132,7 @@ class AppRoutes {
     GetPage(name: clubManagement, page: () => const ClubManagementScreen()),
     GetPage(name: nawClubPost, page: () => const NawClubPostScreen()),
     GetPage(name: createTextPost, page: () => const CreateTextPostScreen()),
+    GetPage(name: createImagePost, page: () => const CreateImagePostScreen()),
+    GetPage(name: postDraft, page: ()=>PostDraftScreen())
   ];
 }

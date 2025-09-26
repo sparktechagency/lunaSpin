@@ -138,12 +138,9 @@ class CreateTextPostScreen extends StatelessWidget {
                                       children: [
                                         GestureDetector(
                                           onTap: () => c.removeTag(p),
-                                          child: CommonText(
-                                            text: '×',
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w700,
-                                            color: AppColors.colorPrimaryBlack,
-                                          ),
+                                          child: Icon(
+                                            size: 18.sp,
+                                            Icons.close, color: AppColors.colorPrimaryBlack),
                                         ),
                                         6.width,
                                         CommonText(
