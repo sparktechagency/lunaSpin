@@ -74,6 +74,8 @@ class AppColors {
   static const Color colourGreyscaleBlackTrans60 = Color(0xff13293D);
   static const Color colourPrimaryVanilla = Color(0xffF3DFA2);
 
+  static const Color colorPrimaryPurpleTint80 = Color(0xff763D8B);
+
 
 
 }

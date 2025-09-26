@@ -48,6 +48,9 @@ class AppImages {
   static const String twoDaysAgoImageOne = "$baseurl/two_days_ago_image_one.png";
 
   static const String userProfileBg = "$baseurl/user_profile_bg.png";
+  static const String clubProfileBg = "$baseurl/club_profile_bg.png";
+
+  static const String clubLogo = "$baseurl/club_logo.png";
 
   
 

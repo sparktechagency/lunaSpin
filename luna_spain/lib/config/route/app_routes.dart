@@ -1,4 +1,8 @@
 import 'package:get/get.dart';
+import 'package:luna_spain/features/another_screen/create_club/presentation/screens/club_profile_screen.dart';
+import 'package:luna_spain/features/another_screen/club_management/presentation/screens/club_management_screen.dart';
+import 'package:luna_spain/features/another_screen/club_management/presentation/screens/naw_club_post_screen.dart';
+import 'package:luna_spain/features/another_screen/club_management/presentation/screens/create_text_post_screen.dart';
 import 'package:luna_spain/features/setting/presentation/screen/notification_settings_screen.dart';
 import '../../features/auth/change_password/presentation/screen/change_password_screen.dart';
 import '../../features/auth/forgot password/presentation/screen/create_password.dart';
@@ -33,6 +37,9 @@ import '../../features/another_screen/profile_details/presentation/screens/add_p
 import '../../features/another_screen/all_drawer_screens/presentation/screens/likes_screen.dart';
 import '../../features/another_screen/all_drawer_screens/presentation/screens/user_profile_screen.dart';
 import '../../features/another_screen/user_home/presentation/screens/home_screen.dart';
+import '../../features/another_screen/create_club/presentation/screens/create_new_club_screen.dart';
+import '../../features/another_screen/create_club/presentation/screens/create_club_details_screen.dart';
+import '../../features/another_screen/create_club/presentation/screens/create_club_add_image_screen.dart';
 
 class AppRoutes {
   static const String test = "/test_screen.dart";
@@ -71,6 +78,13 @@ class AppRoutes {
   static const String likes = "/likes_screen.dart";
   static const String userProfile = "/user_profile_screen.dart";
   static const String userHome = "/user_home_screen.dart";
+  static const String createNewClub = "/create_new_club_screen.dart";
+  static const String createClubDetails = "/create_club_details_screen.dart";
+  static const String createClubAddImage = "/create_club_add_image_screen.dart";
+  static const String clubProfile = "/club_profile_screen.dart";
+  static const String clubManagement = "/club_management_screen.dart";
+  static const String nawClubPost = "/naw_club_post_screen.dart";
+  static const String createTextPost = "/create_text_post_screen.dart";
 
   static List<GetPage> routes = [
     GetPage(name: splash, page: () => const SplashScreen()),
@@ -107,5 +121,12 @@ class AppRoutes {
     GetPage(name: likes, page: () => const LikesScreen()),
     GetPage(name: userProfile, page: () =>  UserProfileScreen()),
     GetPage(name: userHome, page: () => const HomeScreen()),
+    GetPage(name: createNewClub, page: () => const CreateNewClubScreen()),
+    GetPage(name: createClubDetails, page: () => const CreateClubDetailsScreen()),
+    GetPage(name: createClubAddImage, page: () => const CreateClubAddImageScreen()),
+    GetPage(name: clubProfile, page: () => const ClubProfileScreen()),
+    GetPage(name: clubManagement, page: () => const ClubManagementScreen()),
+    GetPage(name: nawClubPost, page: () => const NawClubPostScreen()),
+    GetPage(name: createTextPost, page: () => const CreateTextPostScreen()),
   ];
 }

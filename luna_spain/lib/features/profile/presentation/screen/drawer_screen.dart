@@ -161,7 +161,57 @@ class DrawerScreen extends StatelessWidget {
                         label: 'Join Club',
                         onTap: () {},
                       ),
-                              Row(
+                      // Clubs section
+               
+                      8.verticalSpace,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              CircleAvatar(
+                                radius: 25.r,
+                                backgroundColor: Colors.white,
+                                child: ClipOval(
+                                  child: CommonImage(
+                                    imageSrc: AppImages.clubLogo,
+                                    height: 45.r,
+                                    width: 45.r,
+                                    fill: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              14.horizontalSpace,
+                              Expanded(
+                                child: CommonText(
+                                  text: 'Pole Ninja',
+                                  fontSize: 20,
+
+                                  textAlign: TextAlign.left,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                      
+                          10.verticalSpace,
+                      
+                          _MenuItem(
+                            label: 'Manage Classes',
+                            onTap: () {},
+                          ),
+                      
+                          _MenuItem(
+                            label: 'Club Management',
+                            onTap: () {
+                              Get.toNamed(AppRoutes.clubManagement);
+                              
+                            },
+                          ),
+                        ],
+                      ),
+                      Row(
                     
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -188,11 +238,17 @@ class DrawerScreen extends StatelessWidget {
                         color: AppColors.colorPrimaryPink,
                       ),
                       14.verticalSpace,
-                      CommonText(
-                        text: 'Create a Club',
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.colorPrimaryPink,
+                      GestureDetector(
+                        onTap: () {
+                          Get.back();
+                          Future.microtask(() => Get.toNamed(AppRoutes.createNewClub));
+                        },
+                        child: CommonText(
+                          text: 'Create a Club',
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.colorPrimaryPink,
+                        ),
                       ),
                       14.verticalSpace,
                       CommonText(

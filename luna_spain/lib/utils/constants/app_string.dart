@@ -398,4 +398,6 @@ class AppString {
   static const String today = "Today";
   static const String yesterday = "Yesterday";
   static const String twoDaysAgo = "2 Days Ago";
+
+  static const String share="Share";
  }
