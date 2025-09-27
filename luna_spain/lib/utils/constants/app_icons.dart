@@ -48,4 +48,8 @@ class AppIcons {
   static const String heartActive = "$baseurl/hear_active.svg";
   static const String heartInactive = "$baseurl/hear_inactive.svg";
   static const String settings = "$baseurl/settings.svg";
+
+  static const String settingsWhite = "$baseurl/settings_white.svg";
+
+  static const String reply = "$baseurl/reply.svg";
 }

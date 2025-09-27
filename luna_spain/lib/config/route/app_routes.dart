@@ -5,6 +5,7 @@ import 'package:luna_spain/features/another_screen/create_club/presentation/scre
 import 'package:luna_spain/features/another_screen/club_management/presentation/screens/club_management_screen.dart';
 import 'package:luna_spain/features/another_screen/club_management/presentation/screens/naw_club_post_screen.dart';
 import 'package:luna_spain/features/another_screen/club_management/presentation/screens/create_image_post_screen.dart';
+import 'package:luna_spain/features/another_screen/user_home/presentation/screens/image_post_comment_screen.dart';
 import 'package:luna_spain/features/setting/presentation/screen/notification_settings_screen.dart';
 import '../../features/auth/change_password/presentation/screen/change_password_screen.dart';
 import '../../features/auth/forgot password/presentation/screen/create_password.dart';
@@ -42,6 +43,8 @@ import '../../features/another_screen/user_home/presentation/screens/home_screen
 import '../../features/another_screen/create_club/presentation/screens/create_new_club_screen.dart';
 import '../../features/another_screen/create_club/presentation/screens/create_club_details_screen.dart';
 import '../../features/another_screen/create_club/presentation/screens/create_club_add_image_screen.dart';
+import '../../features/search/presentation/screens/search_screen.dart';
+import '../../features/search/presentation/screens/search_result_screen.dart';
 
 class AppRoutes {
   static const String test = "/test_screen.dart";
@@ -55,6 +58,8 @@ class AppRoutes {
   static const String createPassword = "/create_password.dart";
   static const String changePassword = "/change_password_screen.dart";
   static const String notifications = "/notifications_screen.dart";
+  static const String search = "/search_screen.dart";
+  static const String searchResults = "/search_result_screen.dart";
   static const String chat = "/chat_screen.dart";
   static const String message = "/message_screen.dart";
   static const String profile = "/profile_screen.dart";
@@ -89,6 +94,7 @@ class AppRoutes {
   static const String createTextPost = "/create_text_post_screen.dart";
   static const String postDraft = "/post_draft_screen";
   static const String createImagePost = "/create_image_post_screen.dart";
+  static const String imagePostComments = "/image_post_comment_screen.dart";
 
   static List<GetPage> routes = [
     GetPage(name: splash, page: () => const SplashScreen()),
@@ -101,6 +107,8 @@ class AppRoutes {
     GetPage(name: createPassword, page: () => CreatePassword()),
     GetPage(name: changePassword, page: () => ChangePasswordScreen()),
     GetPage(name: notifications, page: () => const NotificationScreen()),
+    GetPage(name: search, page: () => const SearchScreen()),
+    GetPage(name: searchResults, page: () => const SearchResultScreen()),
     GetPage(name: chat, page: () => const ChatListScreen()),
     GetPage(name: message, page: () => const MessageScreen()),
     GetPage(name: profile, page: () => const ProfileScreen()),
@@ -133,6 +141,7 @@ class AppRoutes {
     GetPage(name: nawClubPost, page: () => const NawClubPostScreen()),
     GetPage(name: createTextPost, page: () => const CreateTextPostScreen()),
     GetPage(name: createImagePost, page: () => const CreateImagePostScreen()),
+    GetPage(name: imagePostComments, page: () => const ImagePostCommentScreen()),
     GetPage(name: postDraft, page: ()=>PostDraftScreen())
   ];
 }

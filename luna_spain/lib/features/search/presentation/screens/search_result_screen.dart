@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:luna_spain/component/bottom_nav_bar/common_bottom_bar.dart';
 import 'package:luna_spain/component/image/common_image.dart';
 import 'package:luna_spain/component/text/common_text.dart';
 import 'package:luna_spain/config/route/app_routes.dart';
 import 'package:luna_spain/utils/constants/app_colors.dart';
-import 'package:luna_spain/utils/constants/app_images.dart';
 import 'package:luna_spain/utils/constants/app_icons.dart';
+import 'package:luna_spain/utils/constants/app_images.dart';
 import 'package:luna_spain/utils/extensions/extension.dart';
-import 'package:get/get.dart';
-import '../controller/home_controller.dart';
+import 'package:luna_spain/features/another_screen/user_home/presentation/controller/home_controller.dart';
+import '../controller/search_result_controller.dart';
+import 'package:luna_spain/features/search/presentation/controller/search_controller.dart' as s;
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class SearchResultScreen extends StatelessWidget {
+  const SearchResultScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    if (!Get.isRegistered<HomeController>()) {
-      Get.put(HomeController());
+    if (!Get.isRegistered<SearchResultController>()) {
+      Get.put(SearchResultController());
     }
 
     return Scaffold(
@@ -26,45 +28,58 @@ class HomeScreen extends StatelessWidget {
         preferredSize: const Size.fromHeight(0),
         child: AppBar(backgroundColor: AppColors.colourPrimaryPurple),
       ),
-      body: GetBuilder<HomeController>(
+      body: GetBuilder<SearchResultController>(
         builder: (c) {
-          final posts = c.posts;
+          final posts = c.results;
           return Column(
             children: [
-             _topBar(context),
+              _topBar(context),
+              12.height,
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.w),
+                child: _ResultSearchField(),
+              ),
+              8.height,
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.w),
+                child: const _ResultFilterChips(),
+              ),
+              8.height,
               Expanded(
-                child: ListView.separated(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 10.w,
-                    vertical: 12.h,
-                  ),
-                  itemBuilder: (context, index) {
-                    final p = posts[index];
-                    if (p.type == HomePostType.image) {
-                      return _ImagePost(
-                        image: p.image!,
-                        caption: p.caption!,
-                        authorHandle: p.authorHandle,
-                        meta: p.meta,
-                        comments: p.comments,
-                        likes: p.likes,
-                        bookmarks: p.bookmarks,
-                      );
-                    } else {
-                      return _TextPost(
-                        title: p.title!,
-                        body: p.body!,
-                        authorHandle: p.authorHandle,
-                        meta: p.meta,
-                        comments: p.comments,
-                        likes: p.likes,
-                        bookmarks: p.bookmarks,
-                      );
-                    }
-                  },
-                  separatorBuilder: (_, __) => 12.height,
-                  itemCount: posts.length,
-                ),
+                child: c.selectedFilter == 'Clubs'
+                    ? _ResultClubsList(clubs: c.clubs)
+                    : ListView.separated(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 10.w,
+                          vertical: 12.h,
+                        ),
+                        itemBuilder: (context, index) {
+                          final p = posts[index];
+                          if (p.type == HomePostType.image) {
+                            return _ImagePost(
+                              image: p.image!,
+                              caption: p.caption!,
+                              authorHandle: p.authorHandle,
+                              meta: p.meta,
+                              comments: p.comments,
+                              likes: p.likes,
+                              bookmarks: p.bookmarks,
+                            );
+                          } else {
+                            return _TextPost(
+                              title: p.title!,
+                              body: p.body!,
+                              authorHandle: p.authorHandle,
+                              meta: p.meta,
+                              comments: p.comments,
+                              likes: p.likes,
+                              bookmarks: p.bookmarks,
+                            );
+                          }
+                        },
+                        separatorBuilder: (_, __) => 12.height,
+                        itemCount: posts.length,
+                      ),
               ),
             ],
           );
@@ -80,82 +95,79 @@ class HomeScreen extends StatelessWidget {
         ),
         child: const SafeArea(
           top: false,
-          child: CommonBottomNavBar(currentIndex: 0),
+          child: CommonBottomNavBar(currentIndex: 1),
         ),
       ),
     );
   }
 }
 
-  Widget _topBar(context) {
-    return Container(
-      padding: EdgeInsets.only(
-        left: 20.w,
-        right: 20.w,
-        top: 15.h,
-        bottom: 14.h,
-      ),
-      decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(
-            color: AppColors.colorPrimaryPink.withOpacity(0.6),
-            width: 1.w,
-          ),
-        ),
-        color: AppColors.colourPrimaryPurple,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            offset: const Offset(0, 2),
-            blurRadius: 4,
-          ),
-        ],
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(20.r),
-          bottomRight: Radius.circular(20.r),
+Widget _topBar(context) {
+  return Container(
+    padding: EdgeInsets.only(
+      left: 20.w,
+      right: 20.w,
+      top: 15.h,
+      bottom: 14.h,
+    ),
+    decoration: BoxDecoration(
+      border: Border(
+        bottom: BorderSide(
+          color: AppColors.colorPrimaryPink.withOpacity(0.6),
+          width: 1.w,
         ),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-
-         GestureDetector(
-  onTap: () => Get.toNamed(AppRoutes.drawer),
-  child: CommonImage(
-    imageSrc: AppIcons.drawer,
-    height: 40.h,
-    width: 40.w,
-    fill: BoxFit.contain,
-  ),
-),
-
-
-          CommonImage(
-            imageSrc: AppImages.logoWithBg,
+      color: AppColors.colourPrimaryPurple,
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withOpacity(0.1),
+          offset: const Offset(0, 2),
+          blurRadius: 4,
+        ),
+      ],
+      borderRadius: BorderRadius.only(
+        bottomLeft: Radius.circular(20.r),
+        bottomRight: Radius.circular(20.r),
+      ),
+    ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        GestureDetector(
+          onTap: () => Get.toNamed(AppRoutes.drawer),
+          child: CommonImage(
+            imageSrc: AppIcons.drawer,
             height: 40.h,
-            width: 115.w,
+            width: 40.w,
             fill: BoxFit.contain,
           ),
-          Container(
-            width: 48.w,
-            height: 48.h,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(color: AppColors.white, width: 2),
-            ),
-            child: ClipOval(
-              child: CommonImage(
-                imageSrc: AppImages.man,
-                height: 48.h,
-                width: 48.w,
-                fill: BoxFit.cover,
-              ),
+        ),
+        CommonImage(
+          imageSrc: AppImages.logoWithBg,
+          height: 40.h,
+          width: 115.w,
+          fill: BoxFit.contain,
+        ),
+        Container(
+          width: 48.w,
+          height: 48.h,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(color: AppColors.white, width: 2),
+          ),
+          child: ClipOval(
+            child: CommonImage(
+              imageSrc: AppImages.man,
+              height: 48.h,
+              width: 48.w,
+              fill: BoxFit.cover,
             ),
           ),
-        ],
-      ),
-    );
-  }
+        ),
+      ],
+    ),
+  );
+}
 
 class _ImagePost extends StatelessWidget {
   final String image;
@@ -189,15 +201,11 @@ class _ImagePost extends StatelessWidget {
           width: double.infinity,
           child: Stack(
             children: [
-              // Image background
               Positioned.fill(
                 child: CommonImage(imageSrc: image, fill: BoxFit.cover),
               ),
-
-              // Subtle gradient to improve caption readability at bottom
               Positioned(
                 left: 0,
-
                 right: 0,
                 bottom: 70.h,
                 height: 100.h,
@@ -216,8 +224,6 @@ class _ImagePost extends StatelessWidget {
                   ),
                 ),
               ),
-
-              // Left vertical stats pill floating over image
               Positioned(
                 left: 10.w,
                 bottom: 100.h,
@@ -228,8 +234,6 @@ class _ImagePost extends StatelessWidget {
                   onCommentsTap: () => Get.toNamed(AppRoutes.imagePostComments),
                 ),
               ),
-
-              // Bottom dark overlay caption area
               Positioned(
                 left: 0.w,
                 right: 0.w,
@@ -264,15 +268,12 @@ class _ImagePost extends StatelessWidget {
                           ),
                         ),
                       ),
-
                       14.width,
-
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            // Caption with bottom fade overlay to create subtle shadow on last lines
                             Stack(
                               children: [
                                 RichText(
@@ -299,10 +300,8 @@ class _ImagePost extends StatelessWidget {
                                           begin: Alignment.topCenter,
                                           end: Alignment.bottomCenter,
                                           colors: [
-                                            AppColors.colorGreyScalBlack60
-                                                .withOpacity(0.05),
-                                            AppColors.colorGreyScalBlack60
-                                                .withOpacity(0.02),
+                                            AppColors.colorGreyScalBlack60.withOpacity(0.05),
+                                            AppColors.colorGreyScalBlack60.withOpacity(0.02),
                                             AppColors.colorGreyScalBlack60,
                                           ],
                                         ),
@@ -326,8 +325,7 @@ class _ImagePost extends StatelessWidget {
                                     style: TextStyle(
                                       color: AppColors.colorPrimaryPink,
                                       decoration: TextDecoration.underline,
-                                      decorationColor:
-                                          AppColors.colorPrimaryPink,
+                                      decorationColor: AppColors.colorPrimaryPink,
                                       decorationThickness: 1.5,
                                     ),
                                   ),
@@ -348,8 +346,6 @@ class _ImagePost extends StatelessWidget {
                   ),
                 ),
               ),
-
-              // Small avatar overlapping the bottom overlay on the left
             ],
           ),
         ),
@@ -357,7 +353,6 @@ class _ImagePost extends StatelessWidget {
     );
   }
 
-  // Build styled spans for caption: highlight @mentions with pink and underline
   List<InlineSpan> _captionSpans(String text) {
     final spans = <InlineSpan>[];
     final mentionRegex = RegExp(r'@\w+');
@@ -421,7 +416,6 @@ class _TextPost extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          // Main row content
           Padding(
             padding: EdgeInsets.all(12.w),
             child: Row(
@@ -432,7 +426,7 @@ class _TextPost extends StatelessWidget {
                     Container(
                       height: 50.w,
                       width: 50.w,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: AppColors.white,
                         shape: BoxShape.circle,
                       ),
@@ -455,28 +449,24 @@ class _TextPost extends StatelessWidget {
                       commentColor: AppColors.colorPrimaryBlack,
                       likeColor: AppColors.red,
                     ),
-
-
                     14.height,
-
-                         Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                color: AppColors.white,
-                                width: 2,
-                              ),
-                            ),
-                            child: ClipOval(
-                              child: CommonImage(
-                                imageSrc: AppImages.man,
-                                height: 54.w,
-                                width: 54.w,
-                                fill: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                        
+                    Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: AppColors.white,
+                          width: 2,
+                        ),
+                      ),
+                      child: ClipOval(
+                        child: CommonImage(
+                          imageSrc: AppImages.man,
+                          height: 54.w,
+                          width: 54.w,
+                          fill: BoxFit.cover,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
                 10.width,
@@ -493,12 +483,10 @@ class _TextPost extends StatelessWidget {
                         fontWeight: FontWeight.w700,
                         color: AppColors.colourPrimaryPurple,
                       ),
-                      // Body with bottom fade overlay to create a white shadow on last lines
                       Padding(
                         padding: EdgeInsets.only(top: 7.h),
                         child: Stack(
                           children: [
-                            // The actual description text
                             CommonText(
                               text: body,
                               fontSize: 16,
@@ -507,7 +495,6 @@ class _TextPost extends StatelessWidget {
                               color: AppColors.colorPrimaryBlack,
                               maxLines: 6,
                             ),
-                            // Bottom gradient to fade out last lines into card background
                             Positioned(
                               left: 0,
                               right: 0,
@@ -534,13 +521,10 @@ class _TextPost extends StatelessWidget {
                           ],
                         ),
                       ),
-                       10.height,
-                       Row(
-                         crossAxisAlignment: CrossAxisAlignment.center,
-                         children: [
-                          // Avatar
-                    
-                          // Handle + meta styled
+                      10.height,
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
                           Expanded(
                             child: RichText(
                               text: TextSpan(
@@ -550,9 +534,9 @@ class _TextPost extends StatelessWidget {
                                   color: AppColors.colorPrimaryBlack,
                                 ),
                                 children: [
-                                  TextSpan(
-                                    text: authorHandle,
-                                    style: const TextStyle(
+                                  const TextSpan(
+                                    text: '@spinlasspole',
+                                    style: TextStyle(
                                       color: AppColors.colorPrimaryBlue,
                                       decoration: TextDecoration.underline,
                                       decorationColor: AppColors.colorPrimaryBlue,
@@ -561,15 +545,13 @@ class _TextPost extends StatelessWidget {
                                   TextSpan(
                                     text: '  •  ',
                                     style: TextStyle(
-                                      color: AppColors.colorPrimaryBlack
-                                          ,
+                                      color: AppColors.colorPrimaryBlack,
                                     ),
                                   ),
                                   TextSpan(
                                     text: meta,
-                                    style: TextStyle(
-                                      color: AppColors.colorPrimaryBlack
-                                       ,
+                                    style: const TextStyle(
+                                      color: AppColors.colorPrimaryBlack,
                                     ),
                                   ),
                                 ],
@@ -596,7 +578,6 @@ class _LeftStats extends StatelessWidget {
   final int comments;
   final int likes;
   final int bookmarks;
-
   final bool dark; // when used on white cards
   final Color? likeColor;
   final Color? commentColor;
@@ -637,9 +618,7 @@ class _LeftStats extends StatelessWidget {
       decoration: BoxDecoration(
         color: dark ? AppColors.colorGreyScalBlack60 : AppColors.white,
         borderRadius: BorderRadius.circular(14.r),
-        border: dark
-            ? null
-            : Border.all(color: AppColors.white),
+        border: dark ? null : Border.all(color: AppColors.white),
       ),
       child: Column(
         children: [
@@ -668,6 +647,133 @@ class _LeftStats extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _ResultSearchField extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12.r),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: TextField(
+        decoration: InputDecoration(
+          hintText: 'Search...',
+          hintStyle: TextStyle(
+            color: AppColors.colorPrimaryBlack.withOpacity(0.5),
+          ),
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.symmetric(
+            horizontal: 14.w,
+            vertical: 12.h,
+          ),
+          suffixIcon: Padding(
+            padding: EdgeInsets.only(right: 8.w),
+            child: Icon(
+              Icons.search,
+              color: AppColors.colourPrimaryPurple,
+            ),
+          ),
+        ),
+        onChanged: (val) {
+          // TODO: wire to SearchResultController to filter results
+        },
+        textInputAction: TextInputAction.search,
+      ),
+    );
+  }
+}
+
+class _ResultFilterChips extends StatelessWidget {
+  const _ResultFilterChips();
+
+  @override
+  Widget build(BuildContext context) {
+    return GetBuilder<SearchResultController>(builder: (c) {
+      return SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            for (final f in c.filters)
+              InkWell(
+                onTap: () => c.selectFilter(f),
+                child: Container(
+                  margin: EdgeInsets.only(right: 8.w),
+                  padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+                  decoration: BoxDecoration(
+                    color: c.selectedFilter == f ? AppColors.colorPrimaryBlue : AppColors.white,
+                    borderRadius: BorderRadius.circular(12.r),
+                  ),
+                  child: CommonText(
+                    text: f,
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.w600,
+                    color: c.selectedFilter == f ? AppColors.white : AppColors.colourPrimaryPurple,
+                  ),
+                ),
+              ),
+          ],
+        ),
+      );
+    });
+  }
+}
+
+class _ResultClubsList extends StatelessWidget {
+  final List<s.Club> clubs;
+  const _ResultClubsList({required this.clubs});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
+      itemCount: clubs.length,
+      separatorBuilder: (_, __) => 8.height,
+      itemBuilder: (context, index) {
+        final club = clubs[index];
+        return Container(
+          decoration: BoxDecoration(
+            color: AppColors.white,
+            borderRadius: BorderRadius.circular(12.r),
+          ),
+          child: ListTile(
+            contentPadding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 2.h),
+            leading: ClipOval(
+              child: CommonImage(
+                imageSrc: club.avatar,
+                height: 44.w,
+                width: 44.w,
+                fill: BoxFit.cover,
+              ),
+            ),
+            title: CommonText(
+              text: club.name,
+              fontSize: 18,
+              textAlign: TextAlign.start,
+              fontWeight: FontWeight.w700,
+              color: AppColors.colourPrimaryPurple,
+            ),
+            subtitle: CommonText(
+              text: '${club.members.toString().replaceAllMapped(RegExp(r"(\\d{1,3})(?=(\\d{3})+(?!\\d))"), (m) => '${m[1]},')} Members',
+              fontSize: 16,
+              textAlign: TextAlign.start,
+              fontWeight: FontWeight.w600,
+              color: AppColors.colorPrimaryBlue,
+            ),
+            onTap: () {},
+          ),
+        );
+      },
     );
   }
 }
