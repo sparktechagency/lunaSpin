@@ -51,6 +51,12 @@ class AppImages {
   static const String clubProfileBg = "$baseurl/club_profile_bg.png";
 
   static const String clubLogo = "$baseurl/club_logo.png";
+  static const String searchClubBg = "$baseurl/search_club_bg.png";
+
+  static const String calendar = "$baseurl/calendar.png";
+
+  static const String map = "$baseurl/map.png";
+  static const String paypal = "$baseurl/paypal.png";
 
   
 

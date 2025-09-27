@@ -75,6 +75,11 @@ class AppColors {
   static const Color colourPrimaryVanilla = Color(0xffF3DFA2);
 
   static const Color colorPrimaryPurpleTint80 = Color(0xff763D8B);
+  static const Color colorPrimaryPinkTint40 = Color(0xffFFE7F3);
+
+  static const Color colorYoullowBg = Color(0xffFDC539);
+  static const Color colorYoullowbr = Color(0xffFFE7AC);
+
 
 
 

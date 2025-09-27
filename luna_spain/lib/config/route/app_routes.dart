@@ -6,7 +6,7 @@ import 'package:luna_spain/features/another_screen/club_management/presentation/
 import 'package:luna_spain/features/another_screen/club_management/presentation/screens/naw_club_post_screen.dart';
 import 'package:luna_spain/features/another_screen/club_management/presentation/screens/create_image_post_screen.dart';
 import 'package:luna_spain/features/another_screen/user_home/presentation/screens/image_post_comment_screen.dart';
-import 'package:luna_spain/features/setting/presentation/screen/notification_settings_screen.dart';
+import '../../features/setting/presentation/screen/notification_settings_screen.dart';
 import '../../features/auth/change_password/presentation/screen/change_password_screen.dart';
 import '../../features/auth/forgot password/presentation/screen/create_password.dart';
 import '../../features/auth/forgot password/presentation/screen/forgot_password.dart';
@@ -45,6 +45,13 @@ import '../../features/another_screen/create_club/presentation/screens/create_cl
 import '../../features/another_screen/create_club/presentation/screens/create_club_add_image_screen.dart';
 import '../../features/search/presentation/screens/search_screen.dart';
 import '../../features/search/presentation/screens/search_result_screen.dart';
+import '../../features/another_screen/all_drawer_screens/presentation/screens/leave_club_screen.dart';
+import '../../features/another_screen/all_drawer_screens/presentation/screens/search_club_profile_screen.dart';
+import 'package:luna_spain/features/another_screen/all_classes/presentation/screens/available_classes_screen.dart';
+import 'package:luna_spain/features/another_screen/all_classes/presentation/screens/class_details_screen.dart';
+import 'package:luna_spain/features/another_screen/all_classes/presentation/screens/checkout_screen.dart';
+import 'package:luna_spain/features/another_screen/all_classes/presentation/screens/confirm_and_pay_screen.dart';
+import 'package:luna_spain/features/another_screen/all_classes/presentation/screens/booking_complete_screen.dart';
 
 class AppRoutes {
   static const String test = "/test_screen.dart";
@@ -95,6 +102,13 @@ class AppRoutes {
   static const String postDraft = "/post_draft_screen";
   static const String createImagePost = "/create_image_post_screen.dart";
   static const String imagePostComments = "/image_post_comment_screen.dart";
+  static const String leaveClub = "/leave_club_screen.dart";
+  static const String searchClubProfile = "/search_club_profile_screen.dart";
+  static const String availableClasses = "/available_classes_screen.dart";
+  static const String classDetails = "/class_details_screen.dart";
+  static const String checkout = "/checkout_screen.dart";
+  static const String confirmAndPay = "/confirm_and_pay_screen.dart";
+  static const String bookingComplete = "/booking_complete_screen.dart";
 
   static List<GetPage> routes = [
     GetPage(name: splash, page: () => const SplashScreen()),
@@ -142,6 +156,13 @@ class AppRoutes {
     GetPage(name: createTextPost, page: () => const CreateTextPostScreen()),
     GetPage(name: createImagePost, page: () => const CreateImagePostScreen()),
     GetPage(name: imagePostComments, page: () => const ImagePostCommentScreen()),
-    GetPage(name: postDraft, page: ()=>PostDraftScreen())
+    GetPage(name: postDraft, page: ()=>PostDraftScreen()),
+    GetPage(name: leaveClub, page: () => const LeaveClubScreen()),
+    GetPage(name: searchClubProfile, page: () => const SearchClubProfileScreen()),
+    GetPage(name: availableClasses, page: () => const AvailableClassesScreen()),
+    GetPage(name: classDetails, page: () => const ClassDetailsScreen()),
+    GetPage(name: checkout, page: () => const CheckoutScreen()),
+    GetPage(name: confirmAndPay, page: () => const ConfirmAndPayScreen()),
+    GetPage(name: bookingComplete, page: () => const BookingCompleteScreen()),
   ];
 }

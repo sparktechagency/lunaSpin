@@ -5,6 +5,7 @@ import 'package:luna_spain/component/bottom_nav_bar/common_bottom_bar.dart';
 import 'package:luna_spain/component/image/common_image.dart';
 import 'package:luna_spain/component/text/common_text.dart';
 import 'package:luna_spain/config/route/app_routes.dart';
+import 'package:luna_spain/features/another_screen/all_drawer_screens/presentation/screens/search_club_profile_screen.dart';
 import 'package:luna_spain/utils/constants/app_colors.dart';
 import 'package:luna_spain/utils/constants/app_icons.dart';
 import 'package:luna_spain/utils/constants/app_images.dart';
@@ -686,7 +687,7 @@ class _ResultSearchField extends StatelessWidget {
           ),
         ),
         onChanged: (val) {
-          // TODO: wire to SearchResultController to filter results
+       
         },
         textInputAction: TextInputAction.search,
       ),
@@ -770,7 +771,14 @@ class _ResultClubsList extends StatelessWidget {
               fontWeight: FontWeight.w600,
               color: AppColors.colorPrimaryBlue,
             ),
-            onTap: () {},
+            onTap: () => Get.to(
+              () => const SearchClubProfileScreen(),
+              arguments: {
+                'name': club.name,
+                'members': club.members,
+                'avatar': club.avatar,
+              },
+            ),
           ),
         );
       },

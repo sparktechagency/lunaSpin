@@ -52,4 +52,5 @@ class AppIcons {
   static const String settingsWhite = "$baseurl/settings_white.svg";
 
   static const String reply = "$baseurl/reply.svg";
+  static const String remainingIcon = "$baseurl/remaining_icon.svg";
 }
