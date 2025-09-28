@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:luna_spain/utils/extensions/extension.dart';
 
 
 import 'app.dart';
@@ -10,7 +9,7 @@ import 'services/storage/storage_services.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await init.tryCatch();
+ // await init.tryCatch();
 
   runApp(const MyApp());
 }

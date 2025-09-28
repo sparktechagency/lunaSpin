@@ -1,6 +1,14 @@
 import 'package:get/get.dart';
+import 'package:luna_spain/features/another_screen/all_classes/presentation/screens/booked_class_details_screen.dart';
+import 'package:luna_spain/features/another_screen/all_classes/presentation/screens/booked_class_screen.dart';
+import 'package:luna_spain/features/another_screen/all_classes/presentation/screens/cancel_booking_screen.dart';
+import 'package:luna_spain/features/another_screen/club_management/presentation/screens/close_club_screen.dart';
+import 'package:luna_spain/features/another_screen/club_management/presentation/screens/club_notification_setting_screen.dart';
+import 'package:luna_spain/features/another_screen/club_management/presentation/screens/club_privacy_screen.dart';
 import 'package:luna_spain/features/another_screen/club_management/presentation/screens/create_text_post_screen.dart';
+import 'package:luna_spain/features/another_screen/club_management/presentation/screens/edit_club_screen.dart';
 import 'package:luna_spain/features/another_screen/club_management/presentation/screens/post_draft_screen.dart';
+import 'package:luna_spain/features/another_screen/club_management/presentation/screens/premium_features_screen.dart';
 import 'package:luna_spain/features/another_screen/create_club/presentation/screens/club_profile_screen.dart';
 import 'package:luna_spain/features/another_screen/club_management/presentation/screens/club_management_screen.dart';
 import 'package:luna_spain/features/another_screen/club_management/presentation/screens/naw_club_post_screen.dart';
@@ -109,6 +117,14 @@ class AppRoutes {
   static const String checkout = "/checkout_screen.dart";
   static const String confirmAndPay = "/confirm_and_pay_screen.dart";
   static const String bookingComplete = "/booking_complete_screen.dart";
+  static const String bookedClasses = "/booked_classes_screen.dart";
+  static const String bookedClassDetails = "/booked_class_details_screen.dart";
+  static const String cancelBooking = "/cancel_booking_screen.dart";
+  static const String editClub = "/edit_club_screen.dart";
+  static const String clubNotificationSettings = "/club_notification_settings_screen.dart";
+  static const String premiumFeatures = "/premium_features_screen.dart";
+  static const String clubPrivacy = "/club_privacy_screen.dart";
+  static const String closeClub = "/close_club_screen.dart";
 
   static List<GetPage> routes = [
     GetPage(name: splash, page: () => const SplashScreen()),
@@ -164,5 +180,13 @@ class AppRoutes {
     GetPage(name: checkout, page: () => const CheckoutScreen()),
     GetPage(name: confirmAndPay, page: () => const ConfirmAndPayScreen()),
     GetPage(name: bookingComplete, page: () => const BookingCompleteScreen()),
+    GetPage(name: bookedClasses, page: () => const BookedClassesScreen()),
+    GetPage(name: bookedClassDetails, page: () => const BookedClassDetailsScreen()),
+    GetPage(name: cancelBooking, page: () => const CancelBookingScreen()),
+    GetPage(name: editClub, page: () => const EditClubScreen()),
+    GetPage(name: clubNotificationSettings, page: () => const ClubNotificationSettingScreen()),
+    GetPage(name: premiumFeatures, page: () => const PremiumFeaturesScreen()),
+    GetPage(name: clubPrivacy, page: () => const ClubPrivacyScreen()),
+    GetPage(name: closeClub, page: () => const CloseClubScreen()),
   ];
 }

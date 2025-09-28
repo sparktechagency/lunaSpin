@@ -5,6 +5,7 @@ import 'package:luna_spain/component/bottom_nav_bar/common_bottom_bar.dart';
 import 'package:luna_spain/component/button/common_button.dart';
 import 'package:luna_spain/component/image/common_image.dart';
 import 'package:luna_spain/component/text/common_text.dart';
+import 'package:luna_spain/config/route/app_routes.dart';
 import 'package:luna_spain/utils/constants/app_colors.dart';
 import 'package:luna_spain/utils/constants/app_icons.dart';
 import 'package:luna_spain/utils/constants/app_images.dart';
@@ -29,7 +30,7 @@ class BookingCompleteScreen extends StatelessWidget {
       body: GetBuilder<BookingCompleteController>(builder: (c) {
         return Column(
           children: [
-            _topBar(),
+            _topBar(context),
             Expanded(
               child: SingleChildScrollView(
                 child: Container(
@@ -75,23 +76,26 @@ class BookingCompleteScreen extends StatelessWidget {
                         titleSize: 18,
                       ),
                       12.height,
-                      Container(
-                        width: double.infinity,
-                        padding: EdgeInsets.symmetric(vertical: 14.h),
-                        decoration: BoxDecoration(
-                          color: AppColors.colourGreyScaleGreyTint60,
-                          borderRadius: BorderRadius.circular(10.r),
-                          border: Border.all(
-                            
-                            width: 2,
-                            color: AppColors.colourGreyscaleGrey),
-                        ),
-                        child: const Center(
-                          child: CommonText(
-                            text: 'View my upcoming classes',
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.colorPrimaryBlack,
+                      InkWell(
+                        onTap: () => Get.toNamed(AppRoutes.bookedClasses),
+                        child: Container(
+                          width: double.infinity,
+                          padding: EdgeInsets.symmetric(vertical: 14.h),
+                          decoration: BoxDecoration(
+                            color: AppColors.colourGreyScaleGreyTint60,
+                            borderRadius: BorderRadius.circular(10.r),
+                            border: Border.all(
+                              
+                              width: 2,
+                              color: AppColors.colourGreyscaleGrey),
+                          ),
+                          child: const Center(
+                            child: CommonText(
+                              text: 'View my upcoming classes',
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
+                              color: AppColors.colorPrimaryBlack,
+                            ),
                           ),
                         ),
                       ),
@@ -102,13 +106,16 @@ class BookingCompleteScreen extends StatelessWidget {
                         color: AppColors.colourGreyScaleGreyTint40,
                       ),
                       14.height,
-                      Center(
-                        child: CommonText(
-                          text: 'Back to class listing',
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.colorPrimaryBlue,
-                          underline: true,
+                      GestureDetector(
+                        onTap: () => Get.toNamed(AppRoutes.bookedClasses),
+                        child: Center(
+                          child: CommonText(
+                            text: 'Back to class listing',
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.colorPrimaryBlue,
+                            underline: true,
+                          ),
                         ),
                       )
                     ],
@@ -129,30 +136,76 @@ class BookingCompleteScreen extends StatelessWidget {
     );
   }
 
-  Widget _topBar() {
+Widget _topBar(context) {
     return Container(
-      padding: EdgeInsets.only(left: 20.w, right: 20.w, top: 15.h, bottom: 14.h),
+      padding: EdgeInsets.only(
+        left: 20.w,
+        right: 20.w,
+        top: 15.h,
+        bottom: 14.h,
+      ),
       decoration: BoxDecoration(
-        border: Border(bottom: BorderSide(color: AppColors.colorPrimaryPink.withOpacity(0.6), width: 1.w)),
+        border: Border(
+          bottom: BorderSide(
+            color: AppColors.colorPrimaryPink.withOpacity(0.6),
+            width: 1.w,
+          ),
+        ),
         color: AppColors.colourPrimaryPurple,
-        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.1), offset: const Offset(0, 2), blurRadius: 4)],
-        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20.r), bottomRight: Radius.circular(20.r)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            offset: const Offset(0, 2),
+            blurRadius: 4,
+          ),
+        ],
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(20.r),
+          bottomRight: Radius.circular(20.r),
+        ),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          GestureDetector(onTap: () => Get.back(), child: const Icon(Icons.menu, color: Colors.white)),
-          CommonImage(imageSrc: AppImages.logoWithBg, height: 40.h, width: 115.w, fill: BoxFit.contain),
+
+         GestureDetector(
+  onTap: () => Get.toNamed(AppRoutes.drawer),
+  child: CommonImage(
+    imageSrc: AppIcons.drawer,
+    height: 40.h,
+    width: 40.w,
+    fill: BoxFit.contain,
+  ),
+),
+
+
+          CommonImage(
+            imageSrc: AppImages.logoWithBg,
+            height: 40.h,
+            width: 115.w,
+            fill: BoxFit.contain,
+          ),
           Container(
             width: 48.w,
             height: 48.h,
-            decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: AppColors.white, width: 2)),
-            child: ClipOval(child: CommonImage(imageSrc: AppImages.man, height: 48.h, width: 48.w, fill: BoxFit.cover)),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(color: AppColors.white, width: 2),
+            ),
+            child: ClipOval(
+              child: CommonImage(
+                imageSrc: AppImages.man,
+                height: 48.h,
+                width: 48.w,
+                fill: BoxFit.cover,
+              ),
+            ),
           ),
         ],
       ),
     );
   }
+
 
   Widget _screenTitle(String title) {
     return Row(
@@ -219,6 +272,7 @@ class BookingCompleteScreen extends StatelessWidget {
           style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: AppColors.colorPrimaryBlack),
           children: [
             const TextSpan(text: 'Your '),
+            TextSpan(text: "Choreography", style: const TextStyle(fontWeight: FontWeight.w700)),
             TextSpan(text: c.title, style: const TextStyle(fontWeight: FontWeight.w700)),
             const TextSpan(text: ' class has been successfully confirmed and booked.'),
           ],

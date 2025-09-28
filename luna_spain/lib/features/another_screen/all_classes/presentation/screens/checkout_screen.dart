@@ -10,7 +10,6 @@ import 'package:luna_spain/config/route/app_routes.dart';
 import 'package:luna_spain/utils/constants/app_colors.dart';
 import 'package:luna_spain/utils/constants/app_icons.dart';
 import 'package:luna_spain/utils/constants/app_images.dart';
-import 'package:luna_spain/utils/constants/app_string.dart';
 import 'package:luna_spain/utils/extensions/extension.dart';
 import '../controller/checkout_controller.dart';
 
@@ -32,7 +31,7 @@ class CheckoutScreen extends StatelessWidget {
       body: GetBuilder<CheckoutController>(builder: (c) {
         return Column(
           children: [
-            _topBar(),
+          _TopBar(),
             Expanded(
               child: SingleChildScrollView(
                 child: Container(
@@ -365,18 +364,68 @@ class CheckoutScreen extends StatelessWidget {
     );
   }
 
-  Widget _primaryButton() {
-    return SizedBox(
-      width: double.infinity,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.colorPrimaryGreen,
-          foregroundColor: AppColors.colorPrimaryBlack,
-          padding: EdgeInsets.symmetric(vertical: 12.h),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
+}
+
+class _TopBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(
+        left: 20.w,
+        right: 20.w,
+        top: 15.h,
+        bottom: 14.h,
+      ),
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(
+            color: AppColors.colorPrimaryPink.withOpacity(0.6),
+            width: 1.w,
+          ),
         ),
-        onPressed: () {},
-        child: const CommonText(text: 'Checkout', fontSize: 18, fontWeight: FontWeight.w700, color: AppColors.colorPrimaryBlack),
+        color: AppColors.colourPrimaryPurple,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            offset: const Offset(0, 2),
+            blurRadius: 4,
+          ),
+        ],
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(20.r),
+          bottomRight: Radius.circular(20.r),
+        ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          InkWell(
+            onTap: () => Get.back(),
+            child: Icon(Icons.arrow_back, color: AppColors.white, size: 40.h),
+          ),
+          CommonImage(
+            imageSrc: AppImages.logoWithBg,
+            height: 40.h,
+            width: 115.w,
+            fill: BoxFit.contain,
+          ),
+          Container(
+            width: 48.w,
+            height: 48.h,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(color: AppColors.white, width: 2),
+            ),
+            child: ClipOval(
+              child: CommonImage(
+                imageSrc: AppImages.man,
+                height: 48.h,
+                width: 48.w,
+                fill: BoxFit.cover,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

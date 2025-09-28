@@ -29,7 +29,7 @@ class ConfirmAndPayScreen extends StatelessWidget {
       body: GetBuilder<ConfirmAndPayController>(builder: (c) {
         return Column(
           children: [
-            _topBar(),
+            _TopBar(),
             Expanded(
               child: SingleChildScrollView(
                 child: Container(
@@ -68,30 +68,7 @@ class ConfirmAndPayScreen extends StatelessWidget {
     );
   }
 
-  Widget _topBar() {
-    return Container(
-      padding: EdgeInsets.only(left: 20.w, right: 20.w, top: 15.h, bottom: 14.h),
-      decoration: BoxDecoration(
-        border: Border(bottom: BorderSide(color: AppColors.colorPrimaryPink.withOpacity(0.6), width: 1.w)),
-        color: AppColors.colourPrimaryPurple,
-        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.1), offset: const Offset(0, 2), blurRadius: 4)],
-        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20.r), bottomRight: Radius.circular(20.r)),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          GestureDetector(onTap: () => Get.back(), child: const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.white)),
-          CommonImage(imageSrc: AppImages.logoWithBg, height: 40.h, width: 115.w, fill: BoxFit.contain),
-          Container(
-            width: 48.w,
-            height: 48.h,
-            decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: AppColors.white, width: 2)),
-            child: ClipOval(child: CommonImage(imageSrc: AppImages.man, height: 48.h, width: 48.w, fill: BoxFit.cover)),
-          ),
-        ],
-      ),
-    );
-  }
+
 
   Widget _screenTitle(String title) {
     return Row(
@@ -161,8 +138,15 @@ class ConfirmAndPayScreen extends StatelessWidget {
         style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: AppColors.colorPrimaryBlack),
         children: [
           const TextSpan(text: 'Confirm your '),
+          TextSpan(text: "Choreography", style: const TextStyle(
+            
+            fontSize: 18,
+            fontWeight: FontWeight.w600)),
           TextSpan(text: c.title, style: const TextStyle(fontWeight: FontWeight.w700)),
           const TextSpan(text: ' booking, for '),
+          TextSpan(text: "Friday 14th February", style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w600)),
           TextSpan(text: c.dateLine, style: const TextStyle(fontWeight: FontWeight.w700)),
           const TextSpan(text: ', by making a payment using one of the below options.'),
         ],
@@ -172,13 +156,18 @@ class ConfirmAndPayScreen extends StatelessWidget {
 
   Widget _totalDue(ConfirmAndPayController c) {
     return Container(
-      padding: EdgeInsets.all(12.w),
+      padding: EdgeInsets.all(10.w),
       decoration: BoxDecoration(color: AppColors.colourGreyScaleGreyTint60, borderRadius: BorderRadius.circular(10.r)),
       child: Row(
         children: [
-          const CommonText(text: 'Total Due', fontSize: 18, fontWeight: FontWeight.w700, color: AppColors.colorPrimaryBlack),
+          const CommonText(text: 'Total Due', fontSize: 24, fontWeight: FontWeight.w700, color: AppColors.colorPrimaryBlack),
           const Spacer(),
-          CommonText(text: '£${c.total.toStringAsFixed(2)} inc. charges', fontSize: 16, fontWeight: FontWeight.w700, color: AppColors.colorPrimaryBlack),
+          Row(
+            children: [
+              CommonText(text: '£${c.total.toStringAsFixed(2)}  ', fontSize: 16, fontWeight: FontWeight.w700, color: AppColors.colorPrimaryBlack),
+              CommonText(text: 'inc. charges', fontSize: 12, fontWeight: FontWeight.w400, color: AppColors.colorPrimaryBlack),
+            ],
+          ),
         ],
       ),
     );
@@ -188,16 +177,33 @@ class ConfirmAndPayScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const CommonText(text: 'Payment options', fontSize: 14, fontWeight: FontWeight.w700, color: AppColors.colorPrimaryBlack),
-        6.height,
-        const Divider(color: AppColors.colourGreyscaleGrey),
-        10.height,
+
+        Row(
+          children: [
+            Expanded(child: Container(
+              height: 1,
+              color: AppColors.colourPrimaryPurple,
+            )),
+CommonText(
+  
+    left: 14,
+    right: 14,
+  text: 'Payment options', fontSize: 14, fontWeight: FontWeight.w700, color: AppColors.colourPrimaryPurple),
+
+              Expanded(child: Container(
+              height: 1,
+              color: AppColors.colourPrimaryPurple,
+            )),
+          ],
+        ),
+  
+        14.height,
         _optionButton(
           'G Pay',
-          bg: AppColors.colourGreyScaleGreyTint60,
-          borderCLr: AppColors.colourGreyScaleGreyTint40,
+          bg: AppColors.colourGreyScaleGreyTint40,
+          borderCLr: AppColors.colourGreyScaleGreyTint60,
           fg: AppColors.colorPrimaryBlack,
-          icon: AppIcons.google,
+          icon: AppIcons.googleAuth,
           onTap: () => Get.toNamed(
             AppRoutes.bookingComplete,
             arguments: {
@@ -279,6 +285,72 @@ class ConfirmAndPayScreen extends StatelessWidget {
         fontWeight: FontWeight.w600,
         color: AppColors.colorPrimaryBlue,
         underline: true,
+      ),
+    );
+  }
+}
+
+
+class _TopBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(
+        left: 20.w,
+        right: 20.w,
+        top: 15.h,
+        bottom: 14.h,
+      ),
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(
+            color: AppColors.colorPrimaryPink.withOpacity(0.6),
+            width: 1.w,
+          ),
+        ),
+        color: AppColors.colourPrimaryPurple,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            offset: const Offset(0, 2),
+            blurRadius: 4,
+          ),
+        ],
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(20.r),
+          bottomRight: Radius.circular(20.r),
+        ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          InkWell(
+            onTap: () => Get.back(),
+            child: Icon(Icons.arrow_back, color: AppColors.white, size: 40.h),
+          ),
+          CommonImage(
+            imageSrc: AppImages.logoWithBg,
+            height: 40.h,
+            width: 115.w,
+            fill: BoxFit.contain,
+          ),
+          Container(
+            width: 48.w,
+            height: 48.h,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(color: AppColors.white, width: 2),
+            ),
+            child: ClipOval(
+              child: CommonImage(
+                imageSrc: AppImages.man,
+                height: 48.h,
+                width: 48.w,
+                fill: BoxFit.cover,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

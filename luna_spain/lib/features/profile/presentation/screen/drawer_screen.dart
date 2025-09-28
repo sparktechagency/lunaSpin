@@ -206,12 +206,30 @@ class DrawerScreen extends StatelessWidget {
                             label: 'Manage Classes',
                             onTap: () {},
                           ),
+
+                      
                       
                           _MenuItem(
                             label: 'Club Management',
                             onTap: () {
                               Get.toNamed(AppRoutes.clubManagement);
                               
+                            },
+                          ),
+
+
+
+                          _MenuItem(
+                            label: 'Booked Classes',
+                            onTap: () {
+                              Get.toNamed(AppRoutes.bookedClasses);
+                            },
+                          ),
+
+                             _MenuItem(
+                            label: 'Available Classes',
+                            onTap: () {
+                              Get.toNamed(AppRoutes.availableClasses);
                             },
                           ),
                         ],

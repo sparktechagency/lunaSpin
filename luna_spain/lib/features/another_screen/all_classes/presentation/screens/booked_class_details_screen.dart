@@ -12,8 +12,8 @@ import 'package:luna_spain/utils/constants/app_images.dart';
 import 'package:luna_spain/utils/extensions/extension.dart';
 import '../controller/class_details_controller.dart';
 
-class ClassDetailsScreen extends StatelessWidget {
-  const ClassDetailsScreen({super.key});
+class BookedClassDetailsScreen extends StatelessWidget {
+  const BookedClassDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +50,7 @@ class ClassDetailsScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        _screenTitle('Review Class'),
+                        _screenTitle('Booked Class'),
                         14.height,
                         stepperSection(),
                         14.height,
@@ -354,41 +354,8 @@ TW178AB""",
                           ),
                         ),
                   
-                  
-                  14.height,
-                  
-                  Container(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 14.h,
-                      horizontal: 14.w,
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(14.r),
-                      color: AppColors.colourGreyScaleGreyTint60,
-                      
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,                      children: [
-
-                        CommonText(
-                          
-                          fontSize: 24,
-                          fontWeight: FontWeight.w600,
-                          text: "Total "),
-
-
-
-                          CommonText(
-                          
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                          text: "£16.00 ")
-                      ],
-                    ),
-                  )
-                     
-                     
-                     ,
+              
+              
 
 
                      14.height,
@@ -400,7 +367,27 @@ TW178AB""",
                       },
                       buttonColor: AppColors.colorPrimaryGreen,
                       borderColor: AppColors.colorSecondaryGreen,
-                      titleText: "Book Class")
+                      titleSize: 20,
+                      titleWeight: FontWeight.w600,                      titleColor: AppColors.colorPrimaryBlack,
+                      titleText: "Add to my calendar"),
+
+                      14.height,
+
+
+                      InkWell(
+                        onTap: (){
+                          Get.toNamed(AppRoutes.cancelBooking);
+                        },
+                        child: CommonText(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.red,
+                          textAlign: TextAlign.center,
+                          underline: true,
+                          
+                          
+                          text: "Cancel booking",).center,
+                      )
                      
                       ],
                     ),
