@@ -225,7 +225,9 @@ class _ImagePost extends StatelessWidget {
                   comments: comments,
                   likes: likes,
                   bookmarks: bookmarks,
-                  onCommentsTap: () => Get.toNamed(AppRoutes.imagePostComments),
+                  onCommentsTap: () {
+                    
+                  },
                 ),
               ),
 

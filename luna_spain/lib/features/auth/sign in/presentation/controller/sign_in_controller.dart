@@ -23,7 +23,7 @@ class SignInController extends GetxController {
 
   Future<void> signInUser() async {
     if (!formKey.currentState!.validate()) return;
-    Get.toNamed(AppRoutes.profileEmpty);
+    Get.toNamed(AppRoutes.userHome);
     // return;
 
     // isLoading = true;

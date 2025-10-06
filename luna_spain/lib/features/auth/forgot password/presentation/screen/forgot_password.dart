@@ -21,6 +21,7 @@ class ForgotPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ForgetPasswordController>(
+      init: ForgetPasswordController(),
       builder: (controller) => Scaffold(
         body: Stack(
           fit: StackFit.expand,

@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'package:luna_spain/features/another_screen/all_classes/presentation/screens/booked_class_details_screen.dart';
 import 'package:luna_spain/features/another_screen/all_classes/presentation/screens/booked_class_screen.dart';
 import 'package:luna_spain/features/another_screen/all_classes/presentation/screens/cancel_booking_screen.dart';
+import 'package:luna_spain/features/another_screen/booking_settings_screen/presentation/screens/payment_settings_screen.dart';
+import 'package:luna_spain/features/another_screen/booking_settings_screen/presentation/screens/waiting_list_setting_screen.dart';
 import 'package:luna_spain/features/another_screen/club_management/presentation/screens/close_club_screen.dart';
 import 'package:luna_spain/features/another_screen/club_management/presentation/screens/club_notification_setting_screen.dart';
 import 'package:luna_spain/features/another_screen/club_management/presentation/screens/club_privacy_screen.dart';
@@ -13,7 +15,15 @@ import 'package:luna_spain/features/another_screen/create_club/presentation/scre
 import 'package:luna_spain/features/another_screen/club_management/presentation/screens/club_management_screen.dart';
 import 'package:luna_spain/features/another_screen/club_management/presentation/screens/naw_club_post_screen.dart';
 import 'package:luna_spain/features/another_screen/club_management/presentation/screens/create_image_post_screen.dart';
+import 'package:luna_spain/features/another_screen/manage_class/presentation/screens/create_new_class_confirm_class_screen.dart';
+import 'package:luna_spain/features/another_screen/manage_class/presentation/screens/create_new_class_created_screen.dart';
+import 'package:luna_spain/features/another_screen/manage_class/presentation/screens/create_new_class_date_time_screen.dart';
+import 'package:luna_spain/features/another_screen/manage_class/presentation/screens/create_new_class_overview_screen.dart';
+import 'package:luna_spain/features/another_screen/manage_class/presentation/screens/create_new_class_screen.dart';
+import 'package:luna_spain/features/another_screen/manage_class/presentation/screens/create_new_class_ticket_and_cost_screen.dart';
+import 'package:luna_spain/features/another_screen/manage_class/presentation/screens/manage_classes_screen.dart';
 import 'package:luna_spain/features/another_screen/user_home/presentation/screens/image_post_comment_screen.dart';
+import 'package:luna_spain/features/message/presentation/screen/luna_chat_screen.dart';
 import '../../features/setting/presentation/screen/notification_settings_screen.dart';
 import '../../features/auth/change_password/presentation/screen/change_password_screen.dart';
 import '../../features/auth/forgot password/presentation/screen/create_password.dart';
@@ -125,6 +135,16 @@ class AppRoutes {
   static const String premiumFeatures = "/premium_features_screen.dart";
   static const String clubPrivacy = "/club_privacy_screen.dart";
   static const String closeClub = "/close_club_screen.dart";
+  static const String manageClasses = "/manage_classes_screen.dart";
+  static const String createNewClass = "/create_new_class_screen.dart";
+  static const String createNewClassTicketAndCost = "/create_new_class_ticket_and_cost_screen.dart";
+  static const String createNewClassDateTime = "/create_new_class_date_time_screen.dart";
+  static const String createNewClassConfirmClass = "/create_new_class_confirm_class_screen.dart";
+  static const String createNewClassCreated = "/create_new_class_created_screen.dart";
+  static const String createNewClassOverview = "/create_new_class_overview_screen.dart";
+  static const String paymentSettings = "/payment_settings_screen.dart";
+  static const String waitingListSettings = "/waiting_list_settings_screen.dart";
+  static const String lunaChat = "/luna_chat_screen.dart";
 
   static List<GetPage> routes = [
     GetPage(name: splash, page: () => const SplashScreen()),
@@ -188,5 +208,19 @@ class AppRoutes {
     GetPage(name: premiumFeatures, page: () => const PremiumFeaturesScreen()),
     GetPage(name: clubPrivacy, page: () => const ClubPrivacyScreen()),
     GetPage(name: closeClub, page: () => const CloseClubScreen()),
+    GetPage(name: manageClasses, page: () => ManageClassesScreen()),
+    GetPage(name: createNewClass, page: () => const CreateNewClassScreen()),
+    GetPage(name: createNewClassTicketAndCost, page: () => const CreateNewClassTicketAndCostScreen()),
+    GetPage(name: createNewClassDateTime, page: () =>  CreateNewClassDateAndTimeScreen()),
+    GetPage(name: createNewClassConfirmClass, page: () =>  CreateNewClassConfirmClassScreen()),
+    GetPage(name: createNewClassCreated, page: () =>  CreateNewClassClassCreatedScreen()),
+    GetPage(name: createNewClassOverview, page: () =>  CreateNewClassOverviewScreen()),
+    GetPage(name: paymentSettings, page: () => const PaymentSettingScreen()),
+    GetPage(name: waitingListSettings, page: () => const WaitingListSettingScreen()),
+    GetPage(name: lunaChat, page: () => const LunaChatScreen()),
+ 
+ 
+ 
+ 
   ];
 }

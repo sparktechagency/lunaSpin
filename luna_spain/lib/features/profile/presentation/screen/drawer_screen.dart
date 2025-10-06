@@ -204,7 +204,9 @@ class DrawerScreen extends StatelessWidget {
                       
                           _MenuItem(
                             label: 'Manage Classes',
-                            onTap: () {},
+                            onTap: () {
+                              Get.toNamed(AppRoutes.manageClasses);
+                            },
                           ),
 
                       

@@ -7,12 +7,17 @@ import '../../../utils/constants/app_colors.dart';
 import '../../../utils/constants/app_icons.dart';
 import '../../../utils/log/app_log.dart';
 
-
 class CommonBottomNavBar extends StatefulWidget {
-  final int currentIndex; // logical index: 0=settings, 1=notifications, 2=chat, 3=profile
-  final VoidCallback? onCenterTap; // action for the middle "+" button
+  // logical index: 0=home, 1=search, 2=chat, 3=profile
+  final int currentIndex;
+  // optional override for the center "+" action
+  final VoidCallback? onCenterTap;
 
-  const CommonBottomNavBar({required this.currentIndex, this.onCenterTap, super.key});
+  const CommonBottomNavBar({
+    required this.currentIndex,
+    this.onCenterTap,
+    super.key,
+  });
 
   @override
   State<CommonBottomNavBar> createState() => _CommonBottomNavBarState();
@@ -52,13 +57,16 @@ class _CommonBottomNavBarState extends State<CommonBottomNavBar> {
           color: AppColors.colourPrimaryPurple,
           borderRadius: BorderRadius.only(topLeft: corner, topRight: corner),
           border: Border(
-            top: BorderSide(color: AppColors.colorPrimaryPink60.withOpacity(0.6), width: 2.h),
+            top: BorderSide(
+              color: AppColors.colorPrimaryPink60.withOpacity(0.6),
+              width: 2.h,
+            ),
           ),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.08),
               blurRadius: 12,
-              offset: const Offset(0, -2), // subtle lift
+              offset: const Offset(0, -2),
             ),
           ],
         ),
@@ -76,8 +84,10 @@ class _CommonBottomNavBarState extends State<CommonBottomNavBar> {
               asset: AppIcons.searchIcon,
               onTap: () => _onVisualTap(1),
             ),
+            // Center "+" button
             _CenterActionButton(
-              onTap: widget.onCenterTap,
+              // Route tap through the same handler so default sheet appears
+              onTap: () => _onVisualTap(2),
             ),
             _SvgNavItem(
               isSelected: visualSelectedIndex == 3,
@@ -113,7 +123,11 @@ class _CommonBottomNavBarState extends State<CommonBottomNavBar> {
 
     // handle center action
     if (visualIndex == 2) {
-      widget.onCenterTap?.call();
+      if (widget.onCenterTap != null) {
+        widget.onCenterTap!.call();
+      } else {
+        _showCreatePostSheet(context);
+      }
       return;
     }
 
@@ -130,7 +144,7 @@ class _CommonBottomNavBarState extends State<CommonBottomNavBar> {
       }
     } else if (logicalIndex == 2) {
       if (widget.currentIndex != 2) {
-        Get.toNamed(AppRoutes.chat);
+        Get.toNamed(AppRoutes.message);
       }
     } else if (logicalIndex == 3) {
       if (widget.currentIndex != 3) {
@@ -145,7 +159,11 @@ class _SvgNavItem extends StatelessWidget {
   final String asset;
   final VoidCallback onTap;
 
-  const _SvgNavItem({required this.isSelected, required this.asset, required this.onTap});
+  const _SvgNavItem({
+    required this.isSelected,
+    required this.asset,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -193,7 +211,7 @@ class _CenterActionButton extends StatelessWidget {
           color: AppColors.colourPrimaryPurple,
           borderRadius: BorderRadius.circular(16.r),
           border: Border.all(color: AppColors.colourPrimaryPurple80, width: 5),
-       ),
+        ),
         alignment: Alignment.center,
         child: Container(
           height: 40.sp,
@@ -211,4 +229,74 @@ class _CenterActionButton extends StatelessWidget {
       ),
     );
   }
+}
+
+// Default modal sheet matching the provided design
+void _showCreatePostSheet(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    backgroundColor: Colors.white,
+    isScrollControlled: false,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(16.r)),
+    ),
+    builder: (_) {
+      Widget divider() => Divider(
+            height: 1,
+            thickness: 1,
+            color: AppColors.colourGreyScaleGreyTint60,
+          );
+
+      Widget actionItem(String label, ) {
+        return InkWell(
+     
+          child: SizedBox(
+            height: 56.h,
+            width: double.infinity,
+            child: Center(
+              child: Text(
+                label,
+                style: TextStyle(
+                  color: AppColors.colorPrimaryBlue,
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ),
+        );
+      }
+
+      return SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+     
+        
+            InkWell(
+              onTap: (){
+                Get.toNamed(AppRoutes.createImagePost);
+              },
+              child: actionItem(
+                
+                
+                'Photo Library'),
+            ),
+            divider(),
+            InkWell(
+              onTap: () {
+                Get.toNamed(AppRoutes.createTextPost);
+              },
+              child: actionItem('Text Only')),
+            divider(),
+            InkWell(
+              onTap: () {
+                Get.toNamed(AppRoutes.postDraft);
+              },
+              child: actionItem('Drafts')),
+          ],
+        ),
+      );
+    },
+  );
 }

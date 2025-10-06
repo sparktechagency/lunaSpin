@@ -87,20 +87,30 @@ class ClubManagementScreen extends StatelessWidget {
                         // Top actions
                         _rowTile('New Post', onTap: () => Get.toNamed(AppRoutes.nawClubPost)),
                         7.verticalSpace,
-                        _rowTile('Notifications'),
+                        _rowTile(
+                          onTap: () => Get.toNamed(AppRoutes.notifications),
+                          
+                  'Notifications'),
                         7.verticalSpace,
                         _rowTile('Share Club'),
 
                         28.verticalSpace,
                         _sectionHeader('Booking Settings'),
                         28.verticalSpace,
-                        _rowTile('Manage Classes'),
+                        _rowTile(
+                          
+                          onTap: () => Get.toNamed(AppRoutes.manageClasses),
+                          'Manage Classes'),
                         7.verticalSpace,
-                        _rowTile('Payment Settings'),
+                        _rowTile(
+                          onTap: () => Get.toNamed(AppRoutes.paymentSettings),
+                          'Payment Settings'),
                         7.verticalSpace,
                         _rowTile('Cancellation Settings'),
                         7.verticalSpace,
-                        _rowTile('Waiting List Settings'),
+                        _rowTile(
+                          onTap: () => Get.toNamed(AppRoutes.waitingListSettings),
+                          'Waiting List Settings'),
 
                         28.verticalSpace,
                         _sectionHeader('Club Settings'),
