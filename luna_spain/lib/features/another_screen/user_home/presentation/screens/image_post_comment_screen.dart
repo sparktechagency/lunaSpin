@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:luna_spain/component/bottom_nav_bar/common_bottom_bar.dart';
 import 'package:luna_spain/component/image/common_image.dart';
 import 'package:luna_spain/component/text/common_text.dart';
 import 'package:luna_spain/features/another_screen/user_home/presentation/controller/image_post_comment_controller.dart';
@@ -39,76 +40,74 @@ class ImagePostCommentScreen extends StatelessWidget {
                       _imageHeaderCard(),
                       10.height,
                       // Comments list (merge inline replies under their parent)
-                      ..._buildCommentWidgets(c),
+                      
+                     Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12.r),
+                        ),
+                        padding: EdgeInsets.symmetric(
+                          vertical: 8.h,
+                          horizontal: 8.w,
+                        ),
+                        child: Column(
+                          children: _buildCommentWidgets(c),
+                        ),
+                      ),
+                      10.height,
                       10.height,
                     ],
                   ),
                 ),
-                _inputBar(controller: c),
+
+ _inputBar(controller: c),
               ],
             );
           },
         ),
       ),
       backgroundColor: AppColors.colorGreyScalGrey,
+           bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          color: AppColors.colourPrimaryPurple,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(28.r),
+            topRight: Radius.circular(28.r),
+          ),
+        ),
+        child: const SafeArea(
+          top: false,
+          child: CommonBottomNavBar(currentIndex: 0),
+        ),
+      ),
+  
     );
   }
 
   Widget _topBar(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(
-        left: 20.w,
-        right: 20.w,
-        top: 15.h,
-        bottom: 14.h,
-      ),
+      padding: EdgeInsets.only(left: 20.w, right: 20.w, top: 15.h, bottom: 14.h),
       decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(
-            color: AppColors.colorPrimaryPink.withOpacity(0.6),
-            width: 1.w,
-          ),
-        ),
+        border: Border(bottom: BorderSide(color: AppColors.colorPrimaryPink.withOpacity(0.6), width: 1.w)),
         color: AppColors.colourPrimaryPurple,
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(20.r),
-          bottomRight: Radius.circular(20.r),
-        ),
+        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.1), offset: const Offset(0, 2), blurRadius: 4)],
+        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20.r), bottomRight: Radius.circular(20.r)),
       ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          GestureDetector(
-            onTap: Get.back,
-            child: const Icon(Icons.arrow_back, color: Colors.white),
-          ),
-          10.width,
-          CommonText(
-            text: 'LunaSpin',
-            fontSize: 18,
-            fontWeight: FontWeight.w700,
-            color: Colors.white,
-          ),
-          const Spacer(),
+          InkWell(onTap: () => Get.back(), child: Icon(Icons.arrow_back, color: AppColors.white, size: 40.h)),
+          CommonImage(imageSrc: AppImages.logoWithBg, height: 40.h, width: 115.w, fill: BoxFit.contain),
           Container(
-            width: 36.w,
-            height: 36.w,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(color: Colors.white, width: 2),
-            ),
-            child: ClipOval(
-              child: CommonImage(
-                imageSrc: AppImages.man,
-                height: 36.w,
-                width: 36.w,
-                fill: BoxFit.cover,
-              ),
-            ),
+            width: 48.w,
+            height: 48.h,
+            decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: AppColors.white, width: 2)),
+            child: ClipOval(child: CommonImage(imageSrc: AppImages.man, height: 48.h, width: 48.w, fill: BoxFit.cover)),
           ),
         ],
       ),
     );
-  }
+ }
 
   Widget _imageHeaderCard() {
     return Container(
@@ -306,255 +305,295 @@ class ImagePostCommentScreen extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(10.r),
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Avatar (slightly smaller for replies)
-          Container(
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(color: Colors.white, width: 2),
-            ),
-            child: ClipOval(
-              child: CommonImage(
-                imageSrc: AppImages.man,
-                height: cm.isReply ? 30.w : 40.w,
-                width: cm.isReply ? 30.w : 40.w,
-                fill: BoxFit.cover,
-              ),
-            ),
-          ),
-          10.width,
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+      child: IntrinsicHeight(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Avatar (slightly smaller for replies)
+            Column(
               children: [
-                // Header: handle (blue, underlined) + dot + time, heart at right
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: RichText(
-                        text: TextSpan(
-                          children: [
-                            TextSpan(
-                              text: cm.handle,
-                              style: const TextStyle(
-                                color: AppColors.colorPrimaryBlue,
-                                decoration: TextDecoration.underline,
-                                decorationColor: AppColors.colorPrimaryBlue,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                            TextSpan(
-                              text: '  •  ${cm.time}',
-                              style: TextStyle(
-                                color: AppColors.colorPrimaryBlack.withOpacity(0.7),
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ],
-                          style: TextStyle(fontSize: 14.sp),
-                        ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
+                Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.white, width: 2),
+                  ),
+                  child: ClipOval(
+                    child: CommonImage(
+                      imageSrc: AppImages.man,
+                      height:  40.w,
+                      width: 40.w,
+                      fill: BoxFit.cover,
                     ),
-                    GestureDetector(
-                      onTap: () => controller.toggleLike(index),
-                      child: Icon(
-                        cm.liked ? Icons.favorite : Icons.favorite_border,
-                        color: cm.liked ? AppColors.red : AppColors.colourGreyScaleGreyTint60,
-                        size: 20.sp,
-                      ),
-                    ),
-                  ],
-                ),
-                6.height,
-                // Body with @mentions highlighted
-                RichText(
-                  text: TextSpan(
-                    style: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.colorPrimaryBlack,
-                    ),
-                    children: _mentionSpans(cm.text),
                   ),
                 ),
-                8.height,
-                // Reply arrow
-                Row(
-                  children: [
-                    CommonImage(
-                      imageSrc: AppIcons.reply,
-                      height: 18.sp,
-                      width: 18.sp,
-                      fill: BoxFit.contain,
+                // Vertical connector: show only when there is an inline reply
+                if (inlineReply != null)
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.only(top: 10.h, bottom: 40.h),
+                      width: 1,
+                      color: AppColors.colourGreyScaleGreyTint60,
                     ),
-                  ],
-                ),
-                // Inline reply block (if provided)
-                if (inlineReply != null) ...[
-                  10.height,
+                  ),
+              ],
+            ),
+            10.width,
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Header: handle (blue, underlined) + dot + time, heart at right
                   Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      // Left guide line
-                      Container(
-                        width: 14.w,
-                        alignment: Alignment.topCenter,
-                        child: Container(
-                          width: 2.w,
-                          height: 54.h,
-                          color: AppColors.colourGreyScaleGreyTint60,
-                        ),
-                      ),
-                      6.width,
-                      // Reply avatar + content
                       Expanded(
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(color: Colors.white, width: 2),
-                              ),
-                              child: ClipOval(
-                                child: CommonImage(
-                                  imageSrc: AppImages.man,
-                                  height: 30.w,
-                                  width: 30.w,
-                                  fill: BoxFit.cover,
+                        child: RichText(
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: cm.handle,
+                                style: const TextStyle(
+                                  color: AppColors.colorPrimaryBlue,
+                                  decoration: TextDecoration.underline,
+                                  decorationColor: AppColors.colorPrimaryBlue,
+                                  fontWeight: FontWeight.w700,
                                 ),
                               ),
-                            ),
-                            10.width,
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        child: RichText(
-                                          text: TextSpan(
-                                            children: [
-                                              TextSpan(
-                                                text: inlineReply.handle,
-                                                style: const TextStyle(
-                                                  color: AppColors.colorPrimaryBlue,
-                                                  decoration: TextDecoration.underline,
-                                                  decorationColor: AppColors.colorPrimaryBlue,
-                                                  fontWeight: FontWeight.w700,
-                                                ),
-                                              ),
-                                              TextSpan(
-                                                text: '  •  ${inlineReply.time}',
-                                                style: TextStyle(
-                                                  color: AppColors.colorPrimaryBlack.withOpacity(0.7),
-                                                  fontWeight: FontWeight.w600,
-                                                ),
-                                              ),
-                                            ],
-                                            style: TextStyle(fontSize: 14.sp),
-                                          ),
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ),
-                                      Icon(
-                                        inlineReply.liked ? Icons.favorite : Icons.favorite_border,
-                                        color: inlineReply.liked ? AppColors.red : AppColors.colourGreyScaleGreyTint60,
-                                        size: 18.sp,
-                                      ),
-                                    ],
-                                  ),
-                                  6.height,
-                                  RichText(
-                                    text: TextSpan(
-                                      style: const TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w400,
-                                        color: AppColors.colorPrimaryBlack,
-                                      ),
-                                      children: _mentionSpans(inlineReply.text),
-                                    ),
-                                  ),
-                                  8.height,
-                                  Row(
-                                    children: [
-                                      CommonImage(
-                                        imageSrc: AppIcons.reply,
-                                        height: 18.sp,
-                                        width: 18.sp,
-                                        fill: BoxFit.contain,
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                              TextSpan(
+                                text: '  •  ${cm.time}',
+                                style: TextStyle(
+                                  color: AppColors.colorPrimaryBlack.withOpacity(0.7),
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                            style: TextStyle(fontSize: 14.sp),
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () => controller.toggleLike(index),
+                        child: Icon(
+                          cm.liked ? Icons.favorite : Icons.favorite_border,
+                          color: cm.liked ? AppColors.red : AppColors.colourGreyScaleGreyTint60,
+                          size: 20.sp,
                         ),
                       ),
                     ],
                   ),
+                  6.height,
+                  // Body with @mentions highlighted
+                  RichText(
+                    text: TextSpan(
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.colorPrimaryBlack,
+                      ),
+                      children: _mentionSpans(cm.text),
+                    ),
+                  ),
+                  8.height,
+                  // Reply arrow
+                  Row(
+                    children: [
+                      CommonImage(
+                        imageSrc: AppIcons.reply,
+                        height: 18.sp,
+                        width: 18.sp,
+                        fill: BoxFit.contain,
+                      ),
+                    ],
+                  ),
+                  // Inline reply block (if provided)
+                  if (inlineReply != null) ...[
+                    18.height,
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Reply avatar + content
+                        Expanded(
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(color: Colors.white, width: 2),
+                                ),
+                                child: ClipOval(
+                                  child: CommonImage(
+                                    imageSrc: AppImages.man,
+                                    height: 40.w,
+                                    width: 40.w,
+                                    fill: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              10.width,
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: RichText(
+                                            text: TextSpan(
+                                              children: [
+                                                TextSpan(
+                                                  text: inlineReply.handle,
+                                                  style: const TextStyle(
+                                                    color: AppColors.colorPrimaryBlue,
+                                                    decoration: TextDecoration.underline,
+                                                    decorationColor: AppColors.colorPrimaryBlue,
+                                                    fontWeight: FontWeight.w700,
+                                                  ),
+                                                ),
+                                                TextSpan(
+                                                  text: '  •  ${inlineReply.time}',
+                                                  style: TextStyle(
+                                                    color: AppColors.colorPrimaryBlack.withOpacity(0.7),
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                                ),
+                                              ],
+                                              style: TextStyle(fontSize: 14.sp),
+                                            ),
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                        ),
+                                        Icon(
+                                          inlineReply.liked ? Icons.favorite : Icons.favorite_border,
+                                          color: inlineReply.liked ? AppColors.red : AppColors.colourGreyScaleGreyTint60,
+                                          size: 18.sp,
+                                        ),
+                                      ],
+                                    ),
+                                    6.height,
+                                    RichText(
+                                      text: TextSpan(
+                                        style: const TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w400,
+                                          color: AppColors.colorPrimaryBlack,
+                                        ),
+                                        children: _mentionSpans(inlineReply.text),
+                                      ),
+                                    ),
+                                    8.height,
+                                    Row(
+                                      children: [
+                                        CommonImage(
+                                          imageSrc: AppIcons.reply,
+                                          height: 18.sp,
+                                          width: 18.sp,
+                                          fill: BoxFit.contain,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+Widget _inputBar({required ImagePostCommentController controller}) {
+  return SafeArea(
+    top: false,
+    child: Container(
+      color: Colors.transparent, // page background behind the pill
+      padding: EdgeInsets.only(
+        left: 10.w,
+        right: 10.w,
+        bottom: 8.h,
+        top: 6.h,
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Stack(
+              alignment: Alignment.centerLeft,
+              children: [
+                // Rounded grey pill (as in screenshot)
+                Container(
+                  height: 48.h,
+                  decoration: BoxDecoration(
+                    color: AppColors.colourGreyScaleGreyTint40,
+                    borderRadius: BorderRadius.circular(14.r),
+                  ),
+                ),
+
+                // Text input
+                TextField(
+                  controller: controller.inputCtrl,
+                  textInputAction: TextInputAction.send,
+                  onSubmitted: (v) => controller.addComment(v),
+                  decoration: InputDecoration(
+                    hintText: 'Add a comment...',
+                    border: InputBorder.none,
+                    // Extra right padding so text doesn’t go under the send icon
+                    contentPadding: EdgeInsets.only(
+                      left: 14.w,
+                      right: 44.w,
+                      top: 12.h,
+                      bottom: 12.h,
+                    ),
+                  ),
+                ),
+
+                // Paper-plane send icon (only when text exists)
+                Positioned(
+                  right: 12.w,
+                  child: ValueListenableBuilder<TextEditingValue>(
+                    valueListenable: controller.inputCtrl,
+                    builder: (_, value, __) {
+                      final hasText = value.text.trim().isNotEmpty;
+                      return AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 120),
+                        switchInCurve: Curves.easeOut,
+                        switchOutCurve: Curves.easeIn,
+                        child: hasText
+                            ? GestureDetector(
+                                key: const ValueKey('send-visible'),
+                                behavior: HitTestBehavior.translucent,
+                                onTap: () => controller.addComment(value.text),
+                                child: CommonImage(
+                                  imageSrc: AppIcons.commentSent, // your paper-plane
+                                  height: 22.sp,
+                                  width: 22.sp,
+                                  fill: BoxFit.contain,
+                                ),
+                              )
+                            : const SizedBox.shrink(key: ValueKey('send-hidden')),
+                      );
+                    },
+                  ),
+                ),
               ],
             ),
           ),
         ],
       ),
-    );
-  }
-
-  Widget _inputBar({required ImagePostCommentController controller}) {
-    return Container(
-      padding: EdgeInsets.only(left: 12.w, right: 12.w, bottom: 10.h, top: 8.h),
-      color: Colors.white,
-      child: Row(
-        children: [
-          Expanded(
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 12.w),
-              decoration: BoxDecoration(
-                color: AppColors.colourGreyScaleGreyTint40,
-                borderRadius: BorderRadius.circular(22.r),
-              ),
-              child: TextField(
-                controller: controller.inputCtrl,
-                decoration: const InputDecoration(
-                  hintText: 'Add a comment...',
-                  border: InputBorder.none,
-                ),
-              ),
-            ),
-          ),
-          8.width,
-          GestureDetector(
-            onTap: () => controller.addComment(controller.inputCtrl.text),
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
-              decoration: BoxDecoration(
-                color: AppColors.colourPrimaryPurple,
-                borderRadius: BorderRadius.circular(20.r),
-              ),
-              child: CommonText(
-                text: 'Post',
-                fontSize: 14,
-                fontWeight: FontWeight.w700,
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  // Build styled spans for hashtags within the caption paragraph
+    ),
+  );
+}
+// Build styled spans for hashtags within the caption paragraph
   List<InlineSpan> _hashtagSpans(String text) {
     final spans = <InlineSpan>[];
     final regex = RegExp(r'(#[A-Za-z0-9_]+)');
@@ -613,22 +652,58 @@ class ImagePostCommentScreen extends StatelessWidget {
   }
 
   // Build comment widgets merging one inline reply after each parent comment
-  List<Widget> _buildCommentWidgets(ImagePostCommentController c) {
-    final widgets = <Widget>[];
-    int i = 0;
-    while (i < c.comments.length) {
-      final main = c.comments[i];
-      Comment? reply;
-      int? replyIndex;
-      if (i + 1 < c.comments.length && c.comments[i + 1].isReply) {
-        reply = c.comments[i + 1];
-        replyIndex = i + 1;
-        i += 2;
-      } else {
-        i += 1;
-      }
-      widgets.add(_commentTile(index: i - (reply != null ? 2 : 1), controller: c, inlineReply: reply, replyIndex: replyIndex));
+// Build comment widgets merging one inline reply after its parent,
+// and insert a divider between items (no divider after the last).
+List<Widget> _buildCommentWidgets(ImagePostCommentController c) {
+  final tiles = <Widget>[];
+  int i = 0;
+
+  while (i < c.comments.length) {
+    final comment = c.comments[i];
+    Comment? reply;
+    int? replyIndex;
+
+    if (i + 1 < c.comments.length && c.comments[i + 1].isReply) {
+      reply = c.comments[i + 1];
+      replyIndex = i + 1;
+      i += 2;
+    } else {
+      i += 1;
     }
-    return widgets;
+
+    tiles.add(
+      _commentTile(
+        index: i - (reply != null ? 2 : 1),
+        controller: c,
+        inlineReply: reply,
+        replyIndex: replyIndex,
+      ),
+    );
   }
+
+  if (tiles.isEmpty) return tiles;
+
+
+  final withDividers = <Widget>[];
+  for (var t = 0; t < tiles.length; t++) {
+    withDividers.add(tiles[t]);
+    if (t != tiles.length - 1) {
+      withDividers.add(
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 8),
+          child: Divider(
+            height: 1,
+            thickness: 1,
+            color: AppColors.colourGreyScaleGreyTint40,
+         
+          ),
+        ),
+      );
+    }
+  }
+
+  return withDividers;
+}
+
+
 }

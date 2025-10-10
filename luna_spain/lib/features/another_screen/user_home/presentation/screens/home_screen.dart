@@ -54,6 +54,7 @@ class HomeScreen extends StatelessWidget {
                       return _TextPost(
                         title: p.title!,
                         body: p.body!,
+                        
                         authorHandle: p.authorHandle,
                         meta: p.meta,
                         comments: p.comments,
@@ -223,9 +224,13 @@ class _ImagePost extends StatelessWidget {
                 bottom: 100.h,
                 child: _LeftStats(
                   comments: comments,
+                  
+
+                  
                   likes: likes,
                   bookmarks: bookmarks,
                   onCommentsTap: () {
+                    Get.toNamed(AppRoutes.imagePostComments);
                     
                   },
                 ),
@@ -452,6 +457,9 @@ class _TextPost extends StatelessWidget {
                     _LeftStats(
                       comments: comments,
                       likes: likes,
+                      onCommentsTap: () {
+                        Get.toNamed(AppRoutes.textPostComments);
+                      },
                       bookmarks: bookmarks,
                       dark: false,
                       commentColor: AppColors.colorPrimaryBlack,

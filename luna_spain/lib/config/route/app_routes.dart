@@ -23,6 +23,7 @@ import 'package:luna_spain/features/another_screen/manage_class/presentation/scr
 import 'package:luna_spain/features/another_screen/manage_class/presentation/screens/create_new_class_ticket_and_cost_screen.dart';
 import 'package:luna_spain/features/another_screen/manage_class/presentation/screens/manage_classes_screen.dart';
 import 'package:luna_spain/features/another_screen/user_home/presentation/screens/image_post_comment_screen.dart';
+import 'package:luna_spain/features/another_screen/user_home/presentation/screens/text_post_comment_screen.dart';
 import 'package:luna_spain/features/message/presentation/screen/luna_chat_screen.dart';
 import '../../features/setting/presentation/screen/notification_settings_screen.dart';
 import '../../features/auth/change_password/presentation/screen/change_password_screen.dart';
@@ -145,6 +146,7 @@ class AppRoutes {
   static const String paymentSettings = "/payment_settings_screen.dart";
   static const String waitingListSettings = "/waiting_list_settings_screen.dart";
   static const String lunaChat = "/luna_chat_screen.dart";
+  static const String textPostComments = "/text_post_comment_screen.dart";
 
   static List<GetPage> routes = [
     GetPage(name: splash, page: () => const SplashScreen()),
@@ -218,6 +220,8 @@ class AppRoutes {
     GetPage(name: paymentSettings, page: () => const PaymentSettingScreen()),
     GetPage(name: waitingListSettings, page: () => const WaitingListSettingScreen()),
     GetPage(name: lunaChat, page: () => const LunaChatScreen()),
+    GetPage(name: textPostComments, page: () => const TextPostCommentScreen()),
+ 
  
  
  

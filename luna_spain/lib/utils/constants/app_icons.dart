@@ -53,4 +53,5 @@ class AppIcons {
 
   static const String reply = "$baseurl/reply.svg";
   static const String remainingIcon = "$baseurl/remaining_icon.svg";
+  static const String commentSent = "$baseurl/coment_sent.svg";
 }
